@@ -70,6 +70,18 @@ export function Footer() {
 
             </div>
 
+            {/* Sponsor Button */}
+            <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-white/20 text-center">
+              <a 
+                href={siteConfig.sponsorLink || '#'} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-block border-2 border-[hsl(43,96%,56%)] text-[hsl(43,96%,56%)] px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-bold hover:bg-[hsl(43,96%,56%)] hover:text-[hsl(222,47%,11%)] transition-all duration-200"
+              >
+                SPONSOR US
+              </a>
+            </div>
+
             {/* Copyright */}
             <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-white/20 text-center space-y-2">
               <p className="text-white/60 text-xs sm:text-sm">

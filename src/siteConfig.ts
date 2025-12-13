@@ -1,10 +1,11 @@
 export const siteConfig = {
   eventName: 'UmmahHacks',
-  date: 'March 15-16, 2024',
-  location: 'Toronto, Canada',
+  date: 'January 24-25, 2026',
+  location: 'Waterloo, Ontario',
   applicationLink: '#apply',
   lumaLink: 'https://luma.com/otrho3gh',
   discordLink: 'https://discord.gg/ummahhacks',
+  sponsorLink: 'https://form.typeform.com/to/KiQRV7qW',
   email: 'hello@ummahhacks.com',
   socials: {
     twitter: 'https://twitter.com/ummahhacks',
