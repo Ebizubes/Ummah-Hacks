@@ -6,7 +6,7 @@ export const siteConfig = {
   lumaLink: 'https://luma.com/otrho3gh',
   discordLink: 'https://discord.gg/ummahhacks',
   sponsorLink: 'https://form.typeform.com/to/KiQRV7qW',
-  email: 'hello@ummahhacks.com',
+  email: 'muhibwaqar@hotmail.com',
   socials: {
     twitter: 'https://twitter.com/ummahhacks',
     instagram: 'https://instagram.com/ummahhacks',
