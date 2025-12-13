@@ -20,6 +20,7 @@ export function Navbar() {
     { label: 'About', href: '#about' },
     { label: 'Tracks', href: '#tracks' },
     { label: 'Schedule', href: '#schedule' },
+    { label: 'Speakers', href: '#speakers' },
     { label: 'FAQ', href: '#faq' },
     { label: 'Contact', href: '#contact' },
   ]
@@ -36,7 +37,7 @@ export function Navbar() {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`sticky top-0 z-50 bg-black py-4 md:py-6 px-4 md:px-6 w-full ${
+      className={`sticky top-0 z-50 bg-[hsl(222,47%,11%)] py-4 md:py-6 px-4 md:px-6 w-full ${
         scrolled ? 'border-b border-white' : ''
       }`}
     >
@@ -66,7 +67,7 @@ export function Navbar() {
                     e.preventDefault()
                     scrollTo(link.href)
                   }}
-                  className="text-white hover:text-blue-400 transition-colors"
+                  className="text-white hover:text-[hsl(43,96%,56%)] transition-colors"
                 >
                   {link.label.toUpperCase()}
                 </a>
@@ -78,7 +79,7 @@ export function Navbar() {
             <Button 
               size="sm" 
               onClick={() => scrollTo('#apply')}
-              className="bg-blue-900 text-white hover:bg-blue-800"
+              className="bg-[hsl(43,96%,56%)] text-[hsl(222,47%,11%)] hover:bg-[hsl(43,96%,50%)] font-bold"
             >
               Apply
             </Button>
@@ -102,7 +103,7 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-black border-t border-white"
+            className="md:hidden bg-[hsl(222,47%,11%)] border-t border-white"
           >
             <div className="container mx-auto px-4 py-4 space-y-4">
               {navLinks.map((link) => (
@@ -118,7 +119,7 @@ export function Navbar() {
                 <Button 
                   size="sm" 
                   onClick={() => scrollTo('#apply')}
-                  className="bg-blue-900 text-white hover:bg-blue-800"
+                  className="bg-[hsl(43,96%,56%)] text-[hsl(222,47%,11%)] hover:bg-[hsl(43,96%,50%)] font-bold"
                 >
                   Apply
                 </Button>

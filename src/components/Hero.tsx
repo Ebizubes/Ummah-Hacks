@@ -1,6 +1,6 @@
 import { Button } from './ui/button'
 import { siteConfig } from '@/siteConfig'
-import { PixelArtDesertBackground } from './PixelArtDesertBackground'
+import { AuroraBackground } from './AuroraBackground'
 
 export function Hero() {
   const stats = [
@@ -12,13 +12,13 @@ export function Hero() {
   return (
     <section 
       id="hero" 
-      className="min-h-screen flex items-center relative bg-black overflow-hidden"
+      className="min-h-screen flex items-center relative bg-[hsl(222,47%,11%)] overflow-hidden"
     >
-      {/* Pixel art desert scene background */}
-      <PixelArtDesertBackground />
+      {/* Aurora background */}
+      <AuroraBackground />
       
-      {/* Overlay for better text readability - darker */}
-      <div className="absolute inset-0 bg-black/60"></div>
+      {/* Overlay for better text readability */}
+      <div className="absolute inset-0 bg-[hsl(222,47%,11%)]/70"></div>
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center space-y-8">
@@ -39,9 +39,8 @@ export function Hero() {
 
           {/* Description */}
           <div className="py-2">
-            <p className="text-lg text-white max-w-2xl mx-auto">
-              Join us for a hackathon focused on community impact, entrepreneurship, and building solutions
-              that matter.
+            <p className="text-lg text-white max-w-3xl mx-auto leading-relaxed">
+              Join us for North America's biggest Muslim-led hackathon where faith meets innovation, and ambition turns into impact. Rooted in Islamic principles and open to everyone, this is where students get discovered for their value-driven talent, founders find their next hire, and bold ideas turn into real-world impact.
             </p>
           </div>
 
@@ -50,7 +49,7 @@ export function Hero() {
             <Button 
               size="lg" 
               onClick={() => window.open(siteConfig.lumaLink, '_blank')} 
-              className="w-full sm:w-auto bg-blue-900 text-white hover:bg-blue-800"
+              className="w-full sm:w-auto bg-[hsl(43,96%,56%)] text-[hsl(222,47%,11%)] hover:bg-[hsl(43,96%,50%)] font-bold"
             >
               Register on Luma
             </Button>

@@ -14,7 +14,7 @@ export function FAQAccordion({ items }: FAQAccordionProps) {
     <Accordion className="w-full space-y-4">
       {items.map((item, index) => (
         <AccordionItem key={index} value={`item-${index}`} className="border-white/20">
-          <AccordionTrigger value={`item-${index}`} className="text-left text-lg font-bold text-white hover:text-blue-400">
+          <AccordionTrigger value={`item-${index}`} className="text-left text-lg font-bold text-white hover:text-[hsl(43,96%,56%)]">
             {item.question}
           </AccordionTrigger>
           <AccordionContent value={`item-${index}`} className="text-white">

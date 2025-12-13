@@ -33,9 +33,9 @@ export function ScheduleTabs({ day1, day2 }: ScheduleTabsProps) {
 
   return (
     <div className="space-y-8 flex flex-col items-start w-full max-w-2xl">
-      <ScheduleList items={day1} dayLabel="Friday, January 24" />
+      <ScheduleList items={day1} dayLabel="Saturday, January 24" />
       <div className="pt-8 w-full">
-        <ScheduleList items={day2} dayLabel="Saturday, January 25" />
+        <ScheduleList items={day2} dayLabel="Sunday, January 25" />
       </div>
     </div>
   )

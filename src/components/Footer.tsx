@@ -1,11 +1,9 @@
-import { Twitter, Instagram, Linkedin } from 'lucide-react'
+import { Instagram } from 'lucide-react'
 import { siteConfig } from '@/siteConfig'
 
 export function Footer() {
   const socialLinks = [
-    { icon: Twitter, href: siteConfig.socials.twitter, label: 'Twitter' },
     { icon: Instagram, href: siteConfig.socials.instagram, label: 'Instagram' },
-    { icon: Linkedin, href: siteConfig.socials.linkedin, label: 'LinkedIn' },
   ]
 
   return (
@@ -13,20 +11,29 @@ export function Footer() {
       {/* White separator line */}
       <div className="w-full h-px bg-white"></div>
       
-      <footer id="contact" className="bg-black py-12">
+      <footer id="contact" className="bg-[hsl(222,47%,11%)] py-12">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
               
               {/* Email Section */}
-              <div className="text-center md:text-left">
+              <div className="text-center md:text-left space-y-2">
                 <h3 className="text-lg font-bold text-white mb-3">Contact</h3>
-                <a 
-                  href={`mailto:${siteConfig.email}`} 
-                  className="text-white hover:text-blue-400 transition-colors"
-                >
-                  {siteConfig.email}
-                </a>
+                <div className="space-y-2">
+                  <a 
+                    href={`mailto:${siteConfig.email}`} 
+                    className="block text-white hover:text-[hsl(43,96%,56%)] transition-colors"
+                  >
+                    {siteConfig.email}
+                  </a>
+                  <a 
+                    href="mailto:afifasiddiqua24@gmail.com" 
+                    className="block text-white hover:text-blue-400 transition-colors text-sm"
+                  >
+                    afifasiddiqua24@gmail.com
+                    <span className="ml-2 text-xs text-white/70">(for sisters)</span>
+                  </a>
+                </div>
               </div>
 
               {/* Social Media */}
@@ -55,7 +62,7 @@ export function Footer() {
                   href={siteConfig.lumaLink} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="inline-block bg-blue-900 text-white px-6 py-3 font-bold hover:bg-blue-800 transition-colors"
+                  className="inline-block bg-[hsl(43,96%,56%)] text-[hsl(222,47%,11%)] px-6 py-3 font-bold hover:bg-[hsl(43,96%,50%)] transition-colors"
                 >
                   APPLY NOW
                 </a>
