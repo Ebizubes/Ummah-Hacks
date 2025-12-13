@@ -36,7 +36,7 @@ export function Navbar() {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`sticky top-0 z-50 bg-black py-4 md:py-6 px-4 md:px-6 w-full ${
+      className={`sticky top-0 z-50 bg-[#0a1628] py-4 md:py-6 px-4 md:px-6 w-full ${
         scrolled ? 'border-b border-white' : ''
       }`}
     >
@@ -102,7 +102,7 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-black border-t border-white"
+            className="md:hidden bg-[#0a1628] border-t border-white"
           >
             <div className="container mx-auto px-4 py-4 space-y-4">
               {navLinks.map((link) => (

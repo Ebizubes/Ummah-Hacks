@@ -1,6 +1,6 @@
 export const siteConfig = {
   eventName: 'UmmahHacks',
-  date: 'January 24-25, 2025',
+  date: 'January 24-25, 2026',
   location: 'Waterloo',
   applicationLink: '#apply',
   lumaLink: 'https://luma.com/otrho3gh',

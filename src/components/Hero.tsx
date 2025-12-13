@@ -12,7 +12,7 @@ export function Hero() {
   return (
     <section 
       id="hero" 
-      className="min-h-screen flex items-center relative bg-black overflow-hidden"
+      className="min-h-screen flex items-center relative bg-[#0a1628] overflow-hidden"
     >
       {/* Pixel art desert scene background */}
       <PixelArtDesertBackground />

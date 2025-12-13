@@ -13,7 +13,7 @@ export function Footer() {
       {/* White separator line */}
       <div className="w-full h-px bg-white"></div>
       
-      <footer id="contact" className="bg-black py-12">
+      <footer id="contact" className="bg-[#0a1628] py-12">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
@@ -42,7 +42,7 @@ export function Footer() {
                       aria-label={social.label}
                       className="flex flex-col items-center space-y-1 hover:opacity-80 transition-opacity"
                     >
-                      <social.icon className="w-6 h-6 text-white" />
+                      <social.icon className="w-6 h-6 text-[#D4AF37]" />
                       <span className="text-white text-xs">{social.label}</span>
                     </a>
                   ))}

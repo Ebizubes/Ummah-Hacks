@@ -1,6 +1,5 @@
 import { Navbar } from './components/Navbar'
 import { Hero } from './components/Hero'
-import { ScheduleTabs } from './components/ScheduleTabs'
 import { FAQAccordion } from './components/FAQAccordion'
 import { Footer } from './components/Footer'
 import { Button } from './components/ui/button'
@@ -10,7 +9,7 @@ import { Trophy, Users, Sparkles } from 'lucide-react'
 
 function App() {
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-[#0a1628] text-white">
       <Navbar />
 
       <Hero />
@@ -19,7 +18,7 @@ function App() {
       <div className="w-full h-px bg-white"></div>
 
       {/* About Section */}
-      <section id="about" className="min-h-screen flex items-center py-16 bg-black">
+      <section id="about" className="min-h-screen flex items-center py-16 bg-[#0a1628]">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center space-y-8">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-12">
@@ -52,7 +51,7 @@ function App() {
               ].map((feature, index) => (
                 <div key={index} className="text-left space-y-2">
                   <div className="flex items-center gap-3">
-                    <feature.icon className="h-6 w-6 text-white" />
+                    <feature.icon className="h-6 w-6 text-[#D4AF37]" />
                     <h3 className="text-xl font-bold text-white">{feature.title}</h3>
                   </div>
                   <p className="text-white/80 pl-9">{feature.description}</p>
@@ -67,7 +66,7 @@ function App() {
       <div className="w-full h-px bg-white"></div>
 
       {/* Tracks Section */}
-      <section id="tracks" className="min-h-screen flex items-center py-16 bg-black">
+      <section id="tracks" className="min-h-screen flex items-center py-16 bg-[#0a1628]">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center space-y-8">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-12">
@@ -97,7 +96,7 @@ function App() {
       <div className="w-full h-px bg-white"></div>
 
       {/* Schedule Section */}
-      <section id="schedule" className="min-h-screen flex items-center py-16 bg-black">
+      <section id="schedule" className="min-h-screen flex items-center py-16 bg-[#0a1628]">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center space-y-8">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-12">
@@ -105,13 +104,9 @@ function App() {
             </h1>
 
             <div className="text-center space-y-6 text-white mb-12">
-              <p className="text-lg leading-relaxed">
-                Friday, January 24 - Saturday, January 25 • 36 hours of innovation
+              <p className="text-2xl md:text-3xl font-bold">
+                Coming Soon
               </p>
-            </div>
-
-            <div className="mt-16 max-w-4xl mx-auto">
-              <ScheduleTabs day1={siteConfig.schedule.day1} day2={siteConfig.schedule.day2} />
             </div>
           </div>
         </div>
@@ -121,7 +116,7 @@ function App() {
       <div className="w-full h-px bg-white"></div>
 
       {/* FAQ Section */}
-      <section id="faq" className="min-h-screen flex items-center py-16 bg-black">
+      <section id="faq" className="min-h-screen flex items-center py-16 bg-[#0a1628]">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center space-y-8">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-12">
@@ -145,7 +140,7 @@ function App() {
       <div className="w-full h-px bg-white"></div>
 
       {/* CTA Section */}
-      <section id="apply" className="min-h-screen flex items-center py-16 bg-black">
+      <section id="apply" className="min-h-screen flex items-center py-16 bg-[#0a1628]">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center space-y-8">
             <h2 className="text-4xl md:text-5xl font-bold text-white">Ready to Build?</h2>

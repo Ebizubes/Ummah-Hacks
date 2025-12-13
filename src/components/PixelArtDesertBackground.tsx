@@ -36,10 +36,15 @@ export function PixelArtDesertBackground() {
     resizeCanvas()
     window.addEventListener('resize', resizeCanvas)
 
-    // Colors - darker/more faded for text readability
-    const lightGreen = '#6B8E6B' // Darker, muted green sky
-    const darkGreen = '#2D5016' // Darker green for silhouettes
-    const white = '#E0E0E0' // Slightly muted white for stars and moon
+    // Colors - darker/more faded for text readability, BLUE theme
+    const lightBlue = '#4A6FA5' // Darker, muted blue sky
+    const darkBlue = '#1E3A5F' // Darker blue for silhouettes
+    const gold = '#D4AF37' // Gold for stars, moon, and crescents
+    
+    // Use blue instead of green (aliases for compatibility)
+    const lightGreen = lightBlue
+    const darkGreen = darkBlue
+    const white = gold // Use gold instead of white for symbols
 
     // Helper to draw pixel (proper pixel art, no scaling issues)
     const drawPixel = (x: number, y: number, color: string) => {
@@ -329,7 +334,7 @@ export function PixelArtDesertBackground() {
       time += 0.03
 
       // Clear canvas
-      ctx2d.fillStyle = lightGreen
+      ctx2d.fillStyle = lightBlue
       ctx2d.fillRect(0, 0, width, height)
 
       // Draw stars (twinkling) - more scattered across sky
