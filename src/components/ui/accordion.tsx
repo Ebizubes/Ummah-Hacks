@@ -72,14 +72,14 @@ const AccordionTrigger = React.forwardRef<HTMLButtonElement, AccordionTriggerPro
         ref={ref}
         type="button"
         className={cn(
-          'flex w-full items-center justify-between p-4 text-left font-medium transition-all hover:bg-accent [&[data-state=open]>svg]:rotate-180',
+          'flex w-full items-center justify-between p-4 text-left font-medium transition-all duration-200 ease-in-out hover:bg-accent [&[data-state=open]>svg]:rotate-180',
           className
         )}
         onClick={() => context.toggleItem(value)}
         {...props}
       >
         {children}
-        <ChevronDown className={cn('h-4 w-4 shrink-0 transition-transform duration-200', isOpen && 'rotate-180')} />
+        <ChevronDown className={cn('h-4 w-4 shrink-0 transition-transform duration-300 ease-in-out', isOpen && 'rotate-180')} />
       </button>
     )
   }
@@ -93,16 +93,34 @@ interface AccordionContentProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const AccordionContent = React.forwardRef<HTMLDivElement, AccordionContentProps>(
   ({ className, value, isOpen, children, ...props }, ref) => {
+    const contentRef = React.useRef<HTMLDivElement>(null)
+    const [height, setHeight] = React.useState<number>(0)
+
+    React.useEffect(() => {
+      if (contentRef.current) {
+        if (isOpen) {
+          const scrollHeight = contentRef.current.scrollHeight
+          setHeight(scrollHeight)
+        } else {
+          setHeight(0)
+        }
+      }
+    }, [isOpen, children])
+
     return (
       <div
         ref={ref}
         className={cn(
-          'overflow-hidden text-sm transition-all duration-300 ease-in-out',
-          isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+          'overflow-hidden text-sm transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]',
+          isOpen ? 'opacity-100' : 'opacity-0'
         )}
+        style={{
+          maxHeight: `${height}px`,
+          transition: 'max-height 500ms cubic-bezier(0.4, 0, 0.2, 1), opacity 400ms ease-in-out',
+        }}
         {...props}
       >
-        <div className={cn('p-4 pt-0', className)}>{children}</div>
+        <div ref={contentRef} className={cn('p-4 pt-0', className)}>{children}</div>
       </div>
     )
   }
