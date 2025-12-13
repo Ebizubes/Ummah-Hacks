@@ -97,7 +97,7 @@ function App() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader
             title="Schedule"
-            subtitle={`${siteConfig.date} - Two days of hacking, learning, and building`}
+            subtitle="Saturday, January 25 - Sunday, January 26 • 36 hours of innovation"
           />
 
           <div className="mt-16 max-w-4xl mx-auto">
