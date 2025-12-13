@@ -1,6 +1,6 @@
 import { Button } from './ui/button'
 import { siteConfig } from '@/siteConfig'
-import { AuroraBackground } from './AuroraBackground'
+import Particles from './Particles'
 
 export function Hero() {
   const stats = [
@@ -14,11 +14,23 @@ export function Hero() {
       id="hero" 
       className="min-h-screen flex items-center relative bg-[hsl(222,47%,11%)] overflow-hidden"
     >
-      {/* Aurora background */}
-      <AuroraBackground />
+      {/* Particles background */}
+      <div className="absolute inset-0 w-full h-full">
+        <Particles
+          particleColors={['#ffffff', '#ffffff']}
+          particleCount={200}
+          particleSpread={10}
+          speed={0.1}
+          particleBaseSize={100}
+          moveParticlesOnHover={true}
+          alphaParticles={false}
+          disableRotation={false}
+          className="absolute inset-0"
+        />
+      </div>
       
       {/* Overlay for better text readability */}
-      <div className="absolute inset-0 bg-[hsl(222,47%,11%)]/70"></div>
+      <div className="absolute inset-0 bg-[hsl(222,47%,11%)]/70 pointer-events-none"></div>
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center space-y-8">
