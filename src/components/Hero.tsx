@@ -3,13 +3,12 @@ import { Button } from './ui/button'
 import { AnimatedBackground } from './AnimatedBackground'
 import { LiquidEtherBackground } from './LiquidEtherBackground'
 import { siteConfig } from '@/siteConfig'
-import { Users, Clock, Trophy } from 'lucide-react'
 
 export function Hero() {
   const stats = [
-    { icon: Users, value: siteConfig.stats.hackers, label: 'Hackers' },
-    { icon: Clock, value: siteConfig.stats.duration, label: 'Duration' },
-    { icon: Trophy, value: siteConfig.stats.prizes, label: 'Prizes' },
+    { value: siteConfig.stats.hackers, label: 'Hackers' },
+    { value: siteConfig.stats.duration, label: 'Duration' },
+    { value: siteConfig.stats.prizes, label: 'Prizes' },
   ]
 
   return (
@@ -69,7 +68,6 @@ export function Hero() {
                 transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
                 className="flex flex-col items-center space-y-2"
               >
-                <stat.icon className="h-8 w-8 text-[hsl(43,96%,56%)] mb-2" />
                 {stat.label === 'Prizes' ? (
                   <motion.div
                     className="text-2xl font-bold animate-shimmer"

@@ -4,8 +4,9 @@ export const siteConfig = {
   location: 'Toronto, Canada',
   applicationLink: '#apply',
   lumaLink: 'https://luma.com/otrho3gh',
-  discordLink: 'https://discord.gg/ummahhacks',
-  email: 'hello@ummahhacks.com',
+  discordLink: 'https://discord.gg/bUykPmdY',
+  sponsorLink: 'https://form.typeform.com/to/KiQRV7qW',
+  email: 'm7waqar@uwaterloo.ca',
   socials: {
     twitter: 'https://twitter.com/ummahhacks',
     instagram: 'https://instagram.com/ummahhacks',

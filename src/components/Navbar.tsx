@@ -67,7 +67,7 @@ export function Navbar() {
               </button>
             ))}
             <div className="flex items-center space-x-4 ml-4">
-              <Button variant="outline" size="sm" onClick={() => scrollTo('#apply')}>
+              <Button variant="outline" size="sm" onClick={() => window.open(siteConfig.sponsorLink, '_blank')}>
                 Sponsor Us
               </Button>
               <Button size="sm" onClick={() => scrollTo('#apply')}>
@@ -107,7 +107,7 @@ export function Navbar() {
                 </button>
               ))}
               <div className="flex flex-col space-y-2 pt-4 border-t border-border">
-                <Button variant="outline" size="sm" onClick={() => scrollTo('#apply')}>
+                <Button variant="outline" size="sm" onClick={() => window.open(siteConfig.sponsorLink, '_blank')}>
                   Sponsor Us
                 </Button>
                 <Button size="sm" onClick={() => scrollTo('#apply')}>
