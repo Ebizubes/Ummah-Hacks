@@ -20,11 +20,11 @@ export function Hero() {
       {/* Overlay for better text readability */}
       <div className="absolute inset-0 bg-[hsl(222,47%,11%)]/70"></div>
       
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <div className="max-w-4xl mx-auto text-center space-y-6 md:space-y-8">
           {/* Main heading */}
-          <div className="space-y-4">
-            <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight">
+          <div className="space-y-3 md:space-y-4">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white leading-tight">
               <div>BUILD FOR THE</div>
               <div>UMMAH</div>
             </h1>
@@ -32,20 +32,20 @@ export function Hero() {
 
           {/* Date and location */}
           <div className="py-2">
-            <p className="text-lg text-white font-medium">
+            <p className="text-base sm:text-lg text-white font-medium px-4">
               {siteConfig.date} | {siteConfig.location}
             </p>
           </div>
 
           {/* Description */}
           <div className="py-2">
-            <p className="text-lg text-white max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg text-white max-w-3xl mx-auto leading-relaxed px-4">
               Join us for North America's biggest Muslim-led hackathon where faith meets innovation, and ambition turns into impact. Rooted in Islamic principles and open to everyone, this is where students get discovered for their value-driven talent, founders find their next hire, and bold ideas turn into real-world impact.
             </p>
           </div>
 
           {/* Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 py-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 py-4 px-4">
             <Button 
               size="lg" 
               onClick={() => window.open(siteConfig.lumaLink, '_blank')} 
@@ -64,11 +64,11 @@ export function Hero() {
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 max-w-2xl mx-auto pt-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 mt-12 md:mt-16 max-w-2xl mx-auto pt-6 md:pt-8 px-4">
             {stats.map((stat, index) => (
               <div key={index} className="flex flex-col items-center space-y-2">
-                <div className="text-2xl md:text-3xl font-bold text-white">{stat.value}</div>
-                <div className="text-sm text-white/70">{stat.label}</div>
+                <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white">{stat.value}</div>
+                <div className="text-xs sm:text-sm text-white/70">{stat.label}</div>
               </div>
             ))}
           </div>
