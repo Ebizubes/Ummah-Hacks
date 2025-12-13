@@ -97,7 +97,7 @@ function App() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader
             title="Schedule"
-            subtitle="Saturday, January 25 - Sunday, January 26 • 36 hours of innovation"
+            subtitle="Friday, January 24 - Saturday, January 25 • 36 hours of innovation"
           />
 
           <div className="mt-16 max-w-4xl mx-auto">
@@ -136,8 +136,8 @@ function App() {
               are open now!
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button size="lg" onClick={() => window.open(siteConfig.applicationLink, '_blank')}>
-                Apply Now
+              <Button size="lg" onClick={() => window.open(siteConfig.lumaLink, '_blank')}>
+                Register on Luma
               </Button>
               <Button
                 size="lg"

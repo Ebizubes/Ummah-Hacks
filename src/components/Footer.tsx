@@ -64,6 +64,16 @@ export function Footer() {
                 <MapPin className="h-4 w-4" />
                 <span>{siteConfig.location}</span>
               </li>
+              <li>
+                <a 
+                  href={siteConfig.lumaLink} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-foreground transition-colors text-[hsl(43,96%,56%)] hover:underline"
+                >
+                  Register on Luma →
+                </a>
+              </li>
             </ul>
             <div className="flex gap-4 mt-4">
               {socialLinks.map((social, index) => (

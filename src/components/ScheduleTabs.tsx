@@ -47,18 +47,18 @@ export function ScheduleTabs({ day1, day2 }: ScheduleTabsProps) {
           >
             <Card
               className={`
-                ${isPrayer ? 'bg-muted/50 border-primary/20' : ''}
-                ${isFinal ? 'border-primary border-2' : ''}
+                ${isPrayer ? 'bg-muted/50 border-[hsl(43,96%,56%)]/20' : ''}
+                ${isFinal ? 'border-[hsl(43,96%,56%)] border-2' : ''}
               `}
             >
               <CardContent className="p-4">
                 <div className="flex items-start gap-4">
-                  <div className={`flex items-center gap-2 min-w-[110px] ${isPrayer ? 'text-primary' : 'text-muted-foreground'}`}>
-                    <IconComponent className={`h-4 w-4 ${isPrayer ? 'text-primary' : ''}`} />
+                  <div className={`flex items-center gap-2 min-w-[110px] ${isPrayer ? 'text-[hsl(43,96%,56%)]' : 'text-muted-foreground'}`}>
+                    <IconComponent className={`h-4 w-4 ${isPrayer ? 'text-[hsl(43,96%,56%)]' : ''}`} />
                     <span className="font-semibold text-sm">{item.time}</span>
                   </div>
                   <div className="flex-1">
-                    <h4 className={`font-semibold mb-1 ${isPrayer ? 'text-primary' : ''} ${isFinal ? 'text-primary text-lg' : ''}`}>
+                    <h4 className={`font-semibold mb-1 ${isPrayer ? 'text-[hsl(43,96%,56%)]' : ''} ${isFinal ? 'text-[hsl(43,96%,56%)] text-lg' : ''}`}>
                       {item.title}
                       {isFinal && <span className="ml-2 text-sm font-normal text-muted-foreground">(36 hours complete)</span>}
                     </h4>

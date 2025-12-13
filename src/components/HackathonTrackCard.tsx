@@ -21,10 +21,10 @@ export function HackathonTrackCard({ title, purpose, challenge, icon, index }: H
       transition={{ duration: 0.5, delay: index * 0.1 }}
       whileHover={{ y: -4 }}
     >
-      <Card className="h-full hover:border-primary/50 transition-all group">
+      <Card className="h-full hover:border-[hsl(43,96%,56%)]/50 transition-all group">
         <CardHeader>
-          <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors w-fit mb-4">
-            <IconComponent className="h-6 w-6 text-primary" />
+          <div className="p-3 rounded-lg bg-[hsl(43,96%,56%)]/10 group-hover:bg-[hsl(43,96%,56%)]/20 transition-colors w-fit mb-4 border border-[hsl(43,96%,56%)]/20">
+            <IconComponent className="h-6 w-6 text-[hsl(43,96%,56%)]" />
           </div>
           <CardTitle className="text-2xl">{title}</CardTitle>
         </CardHeader>

@@ -5,13 +5,6 @@ import { siteConfig } from '@/siteConfig'
 import { Users, Clock, Trophy } from 'lucide-react'
 
 export function Hero() {
-  const scrollTo = (href: string) => {
-    const element = document.querySelector(href)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
   const stats = [
     { icon: Users, value: siteConfig.stats.hackers, label: 'Hackers' },
     { icon: Clock, value: siteConfig.stats.duration, label: 'Duration' },
@@ -31,7 +24,7 @@ export function Hero() {
           >
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
               Build for the{' '}
-              <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[hsl(43,96%,56%)] via-[hsl(43,96%,70%)] to-[hsl(43,96%,56%)] bg-clip-text text-transparent">
                 Ummah
               </span>
             </h1>
@@ -47,8 +40,8 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <Button size="lg" onClick={() => scrollTo('#apply')} className="w-full sm:w-auto">
-              Apply Now
+            <Button size="lg" onClick={() => window.open(siteConfig.lumaLink, '_blank')} className="w-full sm:w-auto">
+              Register on Luma
             </Button>
             <Button
               size="lg"
@@ -74,7 +67,7 @@ export function Hero() {
                 transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
                 className="flex flex-col items-center space-y-2"
               >
-                <stat.icon className="h-8 w-8 text-primary mb-2" />
+                <stat.icon className="h-8 w-8 text-[hsl(43,96%,56%)] mb-2" />
                 {stat.label === 'Prizes' ? (
                   <motion.div
                     className="text-2xl font-bold animate-shimmer"

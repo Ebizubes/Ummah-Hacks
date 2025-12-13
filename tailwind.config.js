@@ -8,8 +8,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        serif: ['Apple Garamond', 'Garamond', 'EB Garamond', 'Cormorant Garamond', 'serif'],
-        brand: ['Apple Garamond', 'Garamond', 'EB Garamond', 'Cormorant Garamond', 'serif'],
+        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        serif: ['Inter', 'system-ui', 'sans-serif'],
+        brand: ['Inter', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: 'hsl(var(--border))',
