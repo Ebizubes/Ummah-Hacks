@@ -12,6 +12,8 @@ export function PixelArtDesertBackground() {
       antialias: false 
     })
     if (!ctx) return
+    // Type assertion for TypeScript
+    const ctx2d = ctx as CanvasRenderingContext2D
 
     let animationFrame: number
     let time = 0
@@ -29,7 +31,7 @@ export function PixelArtDesertBackground() {
       canvas.height = height * scale
       canvas.style.width = width + 'px'
       canvas.style.height = height + 'px'
-      ctx.scale(scale, scale)
+      ctx2d.scale(scale, scale)
     }
     resizeCanvas()
     window.addEventListener('resize', resizeCanvas)
@@ -41,18 +43,18 @@ export function PixelArtDesertBackground() {
 
     // Helper to draw pixel (proper pixel art, no scaling issues)
     const drawPixel = (x: number, y: number, color: string) => {
-      ctx.fillStyle = color
-      ctx.fillRect(Math.floor(x), Math.floor(y), 1, 1)
+      ctx2d.fillStyle = color
+      ctx2d.fillRect(Math.floor(x), Math.floor(y), 1, 1)
     }
     
     // Helper to draw block (for larger elements)
     const drawBlock = (x: number, y: number, width: number, height: number, color: string) => {
-      ctx.fillStyle = color
-      ctx.fillRect(Math.floor(x), Math.floor(y), width, height)
+      ctx2d.fillStyle = color
+      ctx2d.fillRect(Math.floor(x), Math.floor(y), width, height)
     }
 
     // Helper to get dune height at x position (for proper positioning)
-    const getDuneHeight = (x: number, width: number, height: number) => {
+    const getDuneHeight = (x: number, _width: number, height: number) => {
       const duneHeight = height * 0.25
       const duneY = height - duneHeight
       const waveY = Math.sin(x / 50) * 12 + Math.cos(x / 80) * 6
@@ -60,8 +62,9 @@ export function PixelArtDesertBackground() {
     }
 
     // Draw star
-    const drawStar = (x: number, y: number, type: 'plus' | 'square' = 'square') => {
-      if (type === 'plus') {
+    const drawStar = (x: number, y: number, starType: 'plus' | 'square' = 'square') => {
+      // starType parameter used in condition below
+      if (starType === 'plus') {
         drawPixel(x, y, white)
         drawPixel(x - 1, y, white)
         drawPixel(x + 1, y, white)
@@ -74,22 +77,22 @@ export function PixelArtDesertBackground() {
 
     // Draw crescent moon (rotated/diagonal)
     const drawCrescent = (x: number, y: number, size: number, rotation: number = 0) => {
-      ctx.save()
-      ctx.translate(x, y)
-      ctx.rotate(rotation) // Rotate for diagonal orientation
+      ctx2d.save()
+      ctx2d.translate(x, y)
+      ctx2d.rotate(rotation) // Rotate for diagonal orientation
       
-      ctx.fillStyle = white
+      ctx2d.fillStyle = white
       // Main circle
-      ctx.beginPath()
-      ctx.arc(0, 0, size, 0, Math.PI * 2)
-      ctx.fill()
+      ctx2d.beginPath()
+      ctx2d.arc(0, 0, size, 0, Math.PI * 2)
+      ctx2d.fill()
       // Overlay to create crescent
-      ctx.fillStyle = lightGreen
-      ctx.beginPath()
-      ctx.arc(size * 0.3, 0, size * 0.8, 0, Math.PI * 2)
-      ctx.fill()
+      ctx2d.fillStyle = lightGreen
+      ctx2d.beginPath()
+      ctx2d.arc(size * 0.3, 0, size * 0.8, 0, Math.PI * 2)
+      ctx2d.fill()
       
-      ctx.restore()
+      ctx2d.restore()
     }
 
     // Draw minaret (bigger, solid, detailed, touches ground)
@@ -142,7 +145,6 @@ export function PixelArtDesertBackground() {
     // Draw mosque dome (pixel art style, bigger, SOLID, detailed, touches ground)
     const drawDome = (x: number, groundY: number, width: number) => {
       const radius = width / 2
-      const centerX = x + radius
       const px = Math.floor(x)
       const py = Math.floor(groundY) // This is the ground level
       
@@ -306,15 +308,15 @@ export function PixelArtDesertBackground() {
     }
 
     // Draw sand dunes (STATIC - no animation, LOWER, smoother)
-    const drawSandDunes = (width: number, height: number) => {
-      const duneHeight = height * 0.25 // Slightly higher for better composition
-      const duneY = height - duneHeight
+    const drawSandDunes = (duneWidth: number, duneHeight: number) => {
+      const duneHeightPercent = duneHeight * 0.25 // Slightly higher for better composition
+      const duneY = duneHeight - duneHeightPercent
       
       // Draw smooth dunes
-      for (let x = 0; x < width; x++) {
+      for (let x = 0; x < duneWidth; x++) {
         const waveY = Math.sin(x / 50) * 12 + Math.cos(x / 80) * 6
         const currentY = Math.floor(duneY + waveY)
-        const duneBottom = height
+        const duneBottom = duneHeight
         
         // Fill from current Y to bottom with smooth gradient
         for (let y = currentY; y < duneBottom; y++) {
@@ -327,8 +329,8 @@ export function PixelArtDesertBackground() {
       time += 0.03
 
       // Clear canvas
-      ctx.fillStyle = lightGreen
-      ctx.fillRect(0, 0, width, height)
+      ctx2d.fillStyle = lightGreen
+      ctx2d.fillRect(0, 0, width, height)
 
       // Draw stars (twinkling) - more scattered across sky
       const starPositions = [
@@ -356,8 +358,7 @@ export function PixelArtDesertBackground() {
       drawSandDunes(width, height)
 
       // Calculate ground level (top of dunes) - account for dune height
-      const duneHeight = height * 0.25
-      const groundLevel = height - duneHeight
+      // duneHeightPercent is used in getDuneHeight function
 
       // Draw mosque complex FIRST (so it's behind camel/person) - positioned on ground
       const mosqueX = width * 0.68
@@ -430,7 +431,6 @@ export function PixelArtDesertBackground() {
       ref={canvasRef}
       className="absolute inset-0 w-full h-full"
       style={{ 
-        imageRendering: 'pixelated',
         imageRendering: 'crisp-edges'
       }}
     />

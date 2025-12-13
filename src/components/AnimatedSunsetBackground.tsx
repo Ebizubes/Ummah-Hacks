@@ -161,7 +161,6 @@ export function AnimatedSunsetBackground() {
       const domeX = centerX
       const domeY = height * 0.7
       const domeWidth = 300 + Math.sin(time * 0.2) * 20
-      const domeHeight = 150
 
       // Dome arch
       ctx.strokeStyle = 'rgba(212, 175, 55, 0.25)'

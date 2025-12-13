@@ -81,7 +81,7 @@ function App() {
             </div>
 
             <div className="mt-16 space-y-8">
-              {siteConfig.hackathonTracks.map((track, index) => (
+              {siteConfig.hackathonTracks.map((track) => (
                 <div key={track.id} className="text-left space-y-3 border-b border-white/20 pb-8 last:border-0">
                   <h3 className="text-2xl font-bold text-white">{track.title}</h3>
                   <p className="text-white/90"><strong>Purpose:</strong> {track.purpose}</p>

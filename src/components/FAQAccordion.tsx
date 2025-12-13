@@ -11,13 +11,13 @@ interface FAQAccordionProps {
 
 export function FAQAccordion({ items }: FAQAccordionProps) {
   return (
-    <Accordion type="single" collapsible className="w-full space-y-4">
+    <Accordion className="w-full space-y-4">
       {items.map((item, index) => (
         <AccordionItem key={index} value={`item-${index}`} className="border-white/20">
-          <AccordionTrigger className="text-left text-lg font-bold text-white hover:text-blue-400">
+          <AccordionTrigger value={`item-${index}`} className="text-left text-lg font-bold text-white hover:text-blue-400">
             {item.question}
           </AccordionTrigger>
-          <AccordionContent className="text-white">
+          <AccordionContent value={`item-${index}`} className="text-white">
             {item.answer}
           </AccordionContent>
         </AccordionItem>
