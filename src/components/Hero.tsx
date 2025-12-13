@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Button } from './ui/button'
 import { AnimatedBackground } from './AnimatedBackground'
+import { LiquidEtherBackground } from './LiquidEtherBackground'
 import { siteConfig } from '@/siteConfig'
 import { Users, Clock, Trophy } from 'lucide-react'
 
@@ -12,7 +13,8 @@ export function Hero() {
   ]
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-blue-950/30">
+      <LiquidEtherBackground />
       <AnimatedBackground />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center space-y-8">
