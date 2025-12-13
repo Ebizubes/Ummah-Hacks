@@ -1,6 +1,5 @@
-import { Twitter, Instagram, Linkedin, Mail, MapPin } from 'lucide-react'
+import { Twitter, Instagram, Linkedin } from 'lucide-react'
 import { siteConfig } from '@/siteConfig'
-import { motion } from 'framer-motion'
 
 export function Footer() {
   const socialLinks = [
@@ -10,95 +9,70 @@ export function Footer() {
   ]
 
   return (
-    <footer id="contact" className="border-t border-border bg-muted/30">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div>
-            <h3 className="text-2xl font-bold mb-4">{siteConfig.eventName}</h3>
-            <p className="text-muted-foreground">
-              Building for community impact, entrepreneurship, and social good.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2 text-muted-foreground">
-              <li>
-                <a href="#about" className="hover:text-foreground transition-colors">
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="#tracks" className="hover:text-foreground transition-colors">
-                  Tracks
-                </a>
-              </li>
-              <li>
-                <a href="#schedule" className="hover:text-foreground transition-colors">
-                  Schedule
-                </a>
-              </li>
-              <li>
-                <a href="#faq" className="hover:text-foreground transition-colors">
-                  FAQ
-                </a>
-              </li>
-              <li>
-                <a href="#code-of-conduct" className="hover:text-foreground transition-colors">
-                  Code of Conduct
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-semibold mb-4">Contact</h4>
-            <ul className="space-y-3 text-muted-foreground">
-              <li className="flex items-center gap-2">
-                <Mail className="h-4 w-4" />
-                <a href={`mailto:${siteConfig.email}`} className="hover:text-foreground transition-colors">
+    <>
+      {/* White separator line */}
+      <div className="w-full h-px bg-white"></div>
+      
+      <footer id="contact" className="bg-black py-12">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+              
+              {/* Email Section */}
+              <div className="text-center md:text-left">
+                <h3 className="text-lg font-bold text-white mb-3">Contact</h3>
+                <a 
+                  href={`mailto:${siteConfig.email}`} 
+                  className="text-white hover:text-blue-400 transition-colors"
+                >
                   {siteConfig.email}
                 </a>
-              </li>
-              <li className="flex items-center gap-2">
-                <MapPin className="h-4 w-4" />
-                <span>{siteConfig.location}</span>
-              </li>
-              <li>
+              </div>
+
+              {/* Social Media */}
+              <div className="text-center">
+                <h3 className="text-lg font-bold text-white mb-3">Follow Us</h3>
+                <div className="flex justify-center space-x-6">
+                  {socialLinks.map((social, index) => (
+                    <a
+                      key={index}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={social.label}
+                      className="flex flex-col items-center space-y-1 hover:opacity-80 transition-opacity"
+                    >
+                      <social.icon className="w-6 h-6 text-white" />
+                      <span className="text-white text-xs">{social.label}</span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+              {/* Register Button */}
+              <div className="text-center md:text-right">
                 <a 
                   href={siteConfig.lumaLink} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="hover:text-foreground transition-colors text-[hsl(43,96%,56%)] hover:underline"
+                  className="inline-block bg-blue-900 text-white px-6 py-3 font-bold hover:bg-blue-800 transition-colors"
                 >
-                  Register on Luma →
+                  APPLY NOW
                 </a>
-              </li>
-            </ul>
-            <div className="flex gap-4 mt-4">
-              {socialLinks.map((social, index) => (
-                <motion.a
-                  key={index}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={social.label}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="p-2 rounded-lg bg-background hover:bg-accent transition-colors"
-                >
-                  <social.icon className="h-5 w-5" />
-                </motion.a>
-              ))}
+              </div>
+
+            </div>
+
+            {/* Copyright */}
+            <div className="mt-8 pt-6 border-t border-white/20 text-center space-y-2">
+              <p className="text-white/60 text-sm">
+                © {new Date().getFullYear()} {siteConfig.eventName}. All rights reserved.
+              </p>
             </div>
           </div>
         </div>
-
-        <div className="mt-8 pt-8 border-t border-border text-center text-muted-foreground text-sm">
-          <p>&copy; {new Date().getFullYear()} {siteConfig.eventName}. All rights reserved.</p>
-        </div>
-      </div>
-    </footer>
+      </footer>
+    </>
   )
 }
 

@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion'
 
 interface FAQItem {
@@ -12,20 +11,16 @@ interface FAQAccordionProps {
 
 export function FAQAccordion({ items }: FAQAccordionProps) {
   return (
-    <Accordion className="w-full max-w-3xl mx-auto">
+    <Accordion type="single" collapsible className="w-full space-y-4">
       {items.map((item, index) => (
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.3, delay: index * 0.05 }}
-        >
-          <AccordionItem value={`item-${index}`}>
-            <AccordionTrigger value={`item-${index}`}>{item.question}</AccordionTrigger>
-            <AccordionContent value={`item-${index}`}>{item.answer}</AccordionContent>
-          </AccordionItem>
-        </motion.div>
+        <AccordionItem key={index} value={`item-${index}`} className="border-white/20">
+          <AccordionTrigger className="text-left text-lg font-bold text-white hover:text-blue-400">
+            {item.question}
+          </AccordionTrigger>
+          <AccordionContent className="text-white">
+            {item.answer}
+          </AccordionContent>
+        </AccordionItem>
       ))}
     </Accordion>
   )

@@ -36,44 +36,52 @@ export function Navbar() {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-background/80 backdrop-blur-md border-b border-border' : 'bg-transparent'
+      className={`sticky top-0 z-50 bg-black py-4 md:py-6 px-4 md:px-6 w-full ${
+        scrolled ? 'border-b border-white' : ''
       }`}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
-          <motion.a
-            href="#hero"
-            onClick={(e) => {
-              e.preventDefault()
-              scrollTo('#hero')
-            }}
-            className="text-2xl font-bold text-foreground hover:text-primary transition-colors"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            {siteConfig.eventName}
-          </motion.a>
+      <div className="container mx-auto">
+        <div className="flex flex-col md:grid md:grid-cols-3 items-center w-full space-y-4 md:space-y-0">
+          <div className="flex items-center justify-start">
+            <a
+              href="#hero"
+              onClick={(e) => {
+                e.preventDefault()
+                scrollTo('#hero')
+              }}
+              className="text-white font-bold text-lg md:text-xl"
+            >
+              {siteConfig.eventName.toUpperCase()}
+            </a>
+          </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <button
-                key={link.href}
-                onClick={() => scrollTo(link.href)}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {link.label}
-              </button>
-            ))}
-            <div className="flex items-center space-x-4 ml-4">
-              <Button variant="outline" size="sm" onClick={() => window.open(siteConfig.sponsorLink, '_blank')}>
-                Sponsor Us
-              </Button>
-              <Button size="sm" onClick={() => scrollTo('#apply')}>
-                Apply
-              </Button>
+          <nav className="order-3 md:order-2 flex justify-center">
+            <div className="flex justify-center space-x-6 md:space-x-12 text-sm font-medium">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    scrollTo(link.href)
+                  }}
+                  className="text-white hover:text-blue-400 transition-colors"
+                >
+                  {link.label.toUpperCase()}
+                </a>
+              ))}
             </div>
+          </nav>
+
+          <div className="flex justify-end order-2 md:order-3">
+            <Button 
+              size="sm" 
+              onClick={() => scrollTo('#apply')}
+              className="bg-blue-900 text-white hover:bg-blue-800"
+            >
+              Apply
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -87,30 +95,31 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+          {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-background border-t border-border"
+            className="md:hidden bg-black border-t border-white"
           >
             <div className="container mx-auto px-4 py-4 space-y-4">
               {navLinks.map((link) => (
                 <button
                   key={link.href}
                   onClick={() => scrollTo(link.href)}
-                  className="block w-full text-left text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
+                  className="block w-full text-left text-sm font-medium text-white hover:text-blue-400 transition-colors py-2"
                 >
-                  {link.label}
+                  {link.label.toUpperCase()}
                 </button>
               ))}
-              <div className="flex flex-col space-y-2 pt-4 border-t border-border">
-                <Button variant="outline" size="sm" onClick={() => window.open(siteConfig.sponsorLink, '_blank')}>
-                  Sponsor Us
-                </Button>
-                <Button size="sm" onClick={() => scrollTo('#apply')}>
+              <div className="flex flex-col space-y-2 pt-4 border-t border-white">
+                <Button 
+                  size="sm" 
+                  onClick={() => scrollTo('#apply')}
+                  className="bg-blue-900 text-white hover:bg-blue-800"
+                >
                   Apply
                 </Button>
               </div>
