@@ -12,7 +12,7 @@ export function Hero() {
   return (
     <section 
       id="hero" 
-      className="min-h-screen flex items-center relative bg-[hsl(222,47%,11%)] overflow-hidden"
+      className="min-h-screen flex items-center relative bg-black overflow-hidden"
     >
       {/* Particles background */}
       <div className="absolute inset-0 w-full h-full">
@@ -30,7 +30,7 @@ export function Hero() {
       </div>
       
       {/* Overlay for better text readability */}
-      <div className="absolute inset-0 bg-[hsl(222,47%,11%)]/70 pointer-events-none"></div>
+      <div className="absolute inset-0 bg-black/70 pointer-events-none"></div>
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center space-y-8">
@@ -61,7 +61,7 @@ export function Hero() {
             <Button 
               size="lg" 
               onClick={() => window.open(siteConfig.lumaLink, '_blank')} 
-              className="w-full sm:w-auto bg-[hsl(43,96%,56%)] text-[hsl(222,47%,11%)] hover:bg-[hsl(43,96%,50%)] font-bold"
+              className="w-full sm:w-auto bg-[hsl(43,96%,56%)] text-black hover:bg-[hsl(43,96%,50%)] font-bold"
             >
               Register on Luma
             </Button>
