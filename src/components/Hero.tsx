@@ -1,6 +1,6 @@
 import { Button } from './ui/button'
 import { siteConfig } from '@/siteConfig'
-import { AuroraBackground } from './AuroraBackground'
+import { StarsBackground } from './StarsBackground'
 
 export function Hero() {
   const stats = [
@@ -14,11 +14,8 @@ export function Hero() {
       id="hero" 
       className="min-h-screen flex items-center relative bg-[hsl(222,47%,11%)] overflow-hidden"
     >
-      {/* Aurora background */}
-      <AuroraBackground />
-      
-      {/* Overlay for better text readability */}
-      <div className="absolute inset-0 bg-[hsl(222,47%,11%)]/70"></div>
+      {/* Stars background */}
+      <StarsBackground />
       
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center space-y-6 md:space-y-8">

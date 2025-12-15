@@ -5,7 +5,7 @@ import { Footer } from './components/Footer'
 import { Button } from './components/ui/button'
 import { Badge } from './components/ui/badge'
 import { siteConfig } from './siteConfig'
-import { SubtleAuroraBackground } from './components/SubtleAuroraBackground'
+import { FadedStarsBackground } from './components/FadedStarsBackground'
 
 function App() {
   return (
@@ -14,12 +14,9 @@ function App() {
 
       <Hero />
 
-      {/* White separator line */}
-      <div className="w-full h-px bg-white"></div>
-
       {/* About Section */}
       <section id="about" className="min-h-screen flex items-center py-12 md:py-16 bg-[hsl(222,47%,11%)] relative overflow-hidden">
-        <SubtleAuroraBackground intensity={0.25} variant="about" />
+        <FadedStarsBackground />
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-6 md:space-y-8">
             <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-8 md:mb-12">
@@ -46,12 +43,9 @@ function App() {
         </div>
       </section>
 
-      {/* White separator line */}
-      <div className="w-full h-px bg-white"></div>
-
       {/* Tracks Section */}
       <section id="tracks" className="min-h-screen flex items-center py-12 md:py-16 bg-[hsl(222,47%,11%)] relative overflow-hidden">
-        <SubtleAuroraBackground intensity={0.25} variant="tracks" />
+        <FadedStarsBackground />
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-6 md:space-y-8">
             <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-8 md:mb-12">
@@ -77,12 +71,9 @@ function App() {
         </div>
       </section>
 
-      {/* White separator line */}
-      <div className="w-full h-px bg-white"></div>
-
       {/* Schedule Section */}
       <section id="schedule" className="min-h-screen flex items-center py-12 md:py-16 bg-[hsl(222,47%,11%)] relative overflow-hidden">
-        <SubtleAuroraBackground intensity={0.25} variant="schedule" />
+        <FadedStarsBackground />
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-6 md:space-y-8">
             <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-8 md:mb-12">
@@ -133,12 +124,9 @@ function App() {
         </div>
       </section>
 
-      {/* White separator line */}
-      <div className="w-full h-px bg-white"></div>
-
       {/* Speakers/Judges Section */}
       <section id="speakers" className="min-h-screen flex items-center py-12 md:py-16 bg-[hsl(222,47%,11%)] relative overflow-hidden">
-        <SubtleAuroraBackground intensity={0.25} variant="speakers" />
+        <FadedStarsBackground />
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-6 md:space-y-8">
             <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-8 md:mb-12">
@@ -191,12 +179,9 @@ function App() {
         </div>
       </section>
 
-      {/* White separator line */}
-      <div className="w-full h-px bg-white"></div>
-
       {/* FAQ Section */}
       <section id="faq" className="min-h-screen flex items-center py-12 md:py-16 bg-[hsl(222,47%,11%)] relative overflow-hidden">
-        <SubtleAuroraBackground intensity={0.25} variant="faq" />
+        <FadedStarsBackground />
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-6 md:space-y-8">
             <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-8 md:mb-12">
@@ -216,12 +201,9 @@ function App() {
         </div>
       </section>
 
-      {/* White separator line */}
-      <div className="w-full h-px bg-white"></div>
-
       {/* CTA Section */}
       <section id="apply" className="min-h-screen flex items-center py-12 md:py-16 bg-[hsl(222,47%,11%)] relative overflow-hidden">
-        <SubtleAuroraBackground intensity={0.25} variant="cta" />
+        <FadedStarsBackground />
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-6 md:space-y-8">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">Ready to Build?</h2>
