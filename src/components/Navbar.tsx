@@ -41,22 +41,22 @@ export function Navbar() {
       }`}
     >
       <div className="container mx-auto">
-        <div className="flex flex-col md:grid md:grid-cols-3 items-center w-full space-y-4 md:space-y-0">
-          <div className="flex items-center justify-start">
+        <div className="flex items-center justify-between w-full">
+          <div className="flex items-center">
             <a
               href="#hero"
               onClick={(e) => {
                 e.preventDefault()
                 scrollTo('#hero')
               }}
-              className="text-white font-bold text-lg md:text-xl"
+              className="text-white font-bold text-base sm:text-lg md:text-xl"
             >
               {siteConfig.eventName.toUpperCase()}
             </a>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="order-3 md:order-2 flex justify-center">
+          <nav className="hidden md:flex justify-center flex-1">
             <div className="flex justify-center space-x-6 md:space-x-12 text-sm font-medium">
               {navLinks.map((link) => (
                 <a
@@ -74,24 +74,24 @@ export function Navbar() {
             </div>
           </nav>
 
-          <div className="flex justify-end order-2 md:order-3">
+          <div className="flex items-center gap-2">
             <Button 
               size="sm" 
               onClick={() => scrollTo('#apply')}
-              className="bg-blue-900 text-white hover:bg-blue-800"
+              className="hidden sm:flex bg-blue-900 text-white hover:bg-blue-800 text-xs sm:text-sm"
             >
               Apply
             </Button>
-          </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+            {/* Mobile Menu Button */}
+            <button
+              className="md:hidden p-2 text-white"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
         </div>
       </div>
 

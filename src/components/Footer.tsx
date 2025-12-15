@@ -13,17 +13,17 @@ export function Footer() {
       {/* White separator line */}
       <div className="w-full h-px bg-white"></div>
       
-      <footer id="contact" className="bg-[#0a1628] py-12">
-        <div className="container mx-auto px-6">
+      <footer id="contact" className="bg-[#0a1628] py-8 sm:py-12">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-center">
               
               {/* Email Section */}
               <div className="text-center md:text-left">
-                <h3 className="text-lg font-bold text-white mb-3">Contact</h3>
+                <h3 className="text-base sm:text-lg font-bold text-white mb-2 sm:mb-3">Contact</h3>
                 <a 
                   href={`mailto:${siteConfig.email}`} 
-                  className="text-white hover:text-blue-400 transition-colors"
+                  className="text-sm sm:text-base text-white hover:text-blue-400 transition-colors break-all"
                 >
                   {siteConfig.email}
                 </a>
@@ -31,8 +31,8 @@ export function Footer() {
 
               {/* Social Media */}
               <div className="text-center">
-                <h3 className="text-lg font-bold text-white mb-3">Follow Us</h3>
-                <div className="flex justify-center space-x-6">
+                <h3 className="text-base sm:text-lg font-bold text-white mb-2 sm:mb-3">Follow Us</h3>
+                <div className="flex justify-center space-x-4 sm:space-x-6">
                   {socialLinks.map((social, index) => (
                     <a
                       key={index}
@@ -42,7 +42,7 @@ export function Footer() {
                       aria-label={social.label}
                       className="flex flex-col items-center space-y-1 hover:opacity-80 transition-opacity"
                     >
-                      <social.icon className="w-6 h-6 text-[#D4AF37]" />
+                      <social.icon className="w-5 h-5 sm:w-6 sm:h-6 text-[#D4AF37]" />
                       <span className="text-white text-xs">{social.label}</span>
                     </a>
                   ))}
@@ -53,9 +53,9 @@ export function Footer() {
               <div className="text-center md:text-right">
                 <a 
                   href={siteConfig.lumaLink} 
-                  target="_blank" 
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block bg-blue-900 text-white px-6 py-3 font-bold hover:bg-blue-800 transition-colors"
+                  className="inline-block bg-blue-900 text-white px-4 sm:px-6 py-2 sm:py-3 font-bold hover:bg-blue-800 transition-colors text-sm sm:text-base"
                 >
                   APPLY NOW
                 </a>
@@ -64,8 +64,8 @@ export function Footer() {
             </div>
 
             {/* Copyright */}
-            <div className="mt-8 pt-6 border-t border-white/20 text-center space-y-2">
-              <p className="text-white/60 text-sm">
+            <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-white/20 text-center space-y-2 px-2">
+              <p className="text-white/60 text-xs sm:text-sm">
                 © {new Date().getFullYear()} {siteConfig.eventName}. All rights reserved.
               </p>
             </div>

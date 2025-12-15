@@ -20,37 +20,37 @@ export function Hero() {
       {/* Overlay for better text readability - darker */}
       <div className="absolute inset-0 bg-black/60"></div>
       
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <div className="max-w-4xl mx-auto text-center space-y-6 sm:space-y-8">
           {/* Main heading */}
-          <div className="space-y-4">
-            <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight">
+          <div className="space-y-2 sm:space-y-4">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white leading-tight px-2">
               <div>BUILD FOR THE</div>
               <div>UMMAH</div>
             </h1>
           </div>
 
           {/* Date and location */}
-          <div className="py-2">
-            <p className="text-lg text-white font-medium">
+          <div className="py-1 sm:py-2">
+            <p className="text-base sm:text-lg text-white font-medium px-2">
               {siteConfig.date} | {siteConfig.location}
             </p>
           </div>
 
           {/* Description */}
-          <div className="py-2">
-            <p className="text-lg text-white max-w-2xl mx-auto">
+          <div className="py-1 sm:py-2 px-2">
+            <p className="text-base sm:text-lg text-white max-w-2xl mx-auto leading-relaxed">
               Join us for a hackathon focused on community impact, entrepreneurship, and building solutions
               that matter.
             </p>
           </div>
 
           {/* Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 py-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 py-3 sm:py-4 px-2">
             <Button 
               size="lg" 
               onClick={() => window.open(siteConfig.lumaLink, '_blank')} 
-              className="w-full sm:w-auto bg-blue-900 text-white hover:bg-blue-800"
+              className="w-full sm:w-auto bg-blue-900 text-white hover:bg-blue-800 text-base"
             >
               Register on Luma
             </Button>
@@ -58,18 +58,18 @@ export function Hero() {
               size="lg"
               variant="outline"
               onClick={() => window.open(siteConfig.discordLink, '_blank')}
-              className="w-full sm:w-auto border-white text-white hover:bg-white hover:text-black"
+              className="w-full sm:w-auto border-white text-white hover:bg-white hover:text-black text-base"
             >
               Join Discord
             </Button>
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 max-w-2xl mx-auto pt-8">
+          <div className="grid grid-cols-3 gap-4 sm:gap-8 mt-8 sm:mt-16 max-w-2xl mx-auto pt-4 sm:pt-8 px-2">
             {stats.map((stat, index) => (
-              <div key={index} className="flex flex-col items-center space-y-2">
-                <div className="text-2xl md:text-3xl font-bold text-white">{stat.value}</div>
-                <div className="text-sm text-white/70">{stat.label}</div>
+              <div key={index} className="flex flex-col items-center space-y-1 sm:space-y-2">
+                <div className="text-lg sm:text-2xl md:text-3xl font-bold text-white text-center leading-tight">{stat.value}</div>
+                <div className="text-xs sm:text-sm text-white/70 text-center">{stat.label}</div>
               </div>
             ))}
           </div>
