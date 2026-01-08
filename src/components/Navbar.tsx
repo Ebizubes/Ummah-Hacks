@@ -107,21 +107,21 @@ export function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden bg-[hsl(222,47%,11%)] border-t border-white"
           >
-            <div className="container mx-auto px-4 py-4 space-y-3">
+            <div className="container mx-auto px-4 py-3 sm:py-4 space-y-2 sm:space-y-3">
               {navLinks.map((link) => (
                 <button
                   key={link.href}
                   onClick={() => scrollTo(link.href)}
-                  className="block w-full text-left text-sm font-medium text-white hover:text-[hsl(43,96%,56%)] transition-colors py-2"
+                  className="block w-full text-left text-xs sm:text-sm font-medium text-white hover:text-[hsl(43,96%,56%)] transition-colors py-2 sm:py-2.5"
                 >
                   {link.label.toUpperCase()}
                 </button>
               ))}
-              <div className="flex flex-col space-y-2 pt-4 border-t border-white/20">
+              <div className="flex flex-col space-y-2 pt-3 sm:pt-4 border-t border-white/20">
                 <Button 
                   size="sm" 
                   onClick={() => scrollTo('#apply')}
-                  className="w-full bg-[hsl(43,96%,56%)] text-[hsl(222,47%,11%)] hover:bg-[hsl(43,96%,50%)] font-bold"
+                  className="w-full bg-[hsl(43,96%,56%)] text-[hsl(222,47%,11%)] hover:bg-[hsl(43,96%,50%)] font-bold text-xs sm:text-sm"
                 >
                   Apply
                 </Button>

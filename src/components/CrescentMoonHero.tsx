@@ -126,17 +126,16 @@ export function CrescentMoonHero() {
 
         {/* Moon and Star Container - Pakistani Flag Style */}
         <div
-          className="absolute flex items-center justify-center gap-4"
+          className="absolute flex items-center justify-center gap-2 sm:gap-3 md:gap-4"
           style={{
             transform: `scale(${scale}) rotateY(${rotationY}deg)`,
             transformStyle: 'preserve-3d',
             transition: 'transform 0.1s ease-out',
           }}
         >
-          {/* Crescent Moon - Large smooth SVG */}
+          {/* Crescent Moon - Responsive SVG */}
           <svg
-            width="180"
-            height="180"
+            className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-[180px] lg:h-[180px]"
             viewBox="0 0 180 180"
             style={{
               filter: 'drop-shadow(0 0 30px rgba(212, 175, 55, 0.6))',
@@ -162,14 +161,12 @@ export function CrescentMoonHero() {
             />
           </svg>
 
-          {/* Star - Large smooth SVG */}
+          {/* Star - Responsive SVG */}
           <svg
-            width="100"
-            height="100"
+            className="w-14 h-14 sm:w-18 sm:h-18 md:w-22 md:h-22 lg:w-[100px] lg:h-[100px] -ml-2 sm:-ml-3 md:-ml-4 lg:-ml-5"
             viewBox="0 0 100 100"
             style={{
               filter: 'drop-shadow(0 0 20px rgba(212, 175, 55, 0.6))',
-              marginLeft: '-20px',
             }}
           >
             <defs>
@@ -189,16 +186,16 @@ export function CrescentMoonHero() {
         {/* Title */}
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold text-white leading-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white leading-tight px-2">
               UMMAH HACKS
             </h1>
           </div>
         </div>
 
         {/* Scroll Down Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/80 animate-bounce">
-          <span className="text-sm font-medium tracking-wide">SCROLL DOWN</span>
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 sm:gap-2 text-white/80 animate-bounce">
+          <span className="text-xs sm:text-sm font-medium tracking-wide">SCROLL DOWN</span>
+          <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
         </div>
