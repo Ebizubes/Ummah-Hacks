@@ -44,8 +44,8 @@ export function FadedStarsBackground() {
       
       for (let i = 0; i < numStars; i++) {
         const size = Math.random() * 1.2 + 0.3
-        // Much more faded: 0.1 to 0.3 opacity
-        const baseOpacity = Math.random() * 0.2 + 0.1
+        // Brighter stars: 0.4 to 0.8 opacity
+        const baseOpacity = Math.random() * 0.4 + 0.4
         stars.push({
           x: Math.random() * width,
           y: Math.random() * height,
@@ -84,10 +84,10 @@ export function FadedStarsBackground() {
         const pulse = Math.sin(time * star.speed * 1.5 + index) * 0.15 + 0.85
         star.opacity = star.baseOpacity * twinkle * pulse
 
-        // Very subtle glow for larger stars
+        // Brighter glow for larger stars
         if (star.size > 1.0) {
           const gradient = ctx.createRadialGradient(star.x, star.y, 0, star.x, star.y, star.size * 2.5)
-          gradient.addColorStop(0, `rgba(255, 255, 255, ${star.opacity * 0.2})`)
+          gradient.addColorStop(0, `rgba(255, 255, 255, ${star.opacity * 0.5})`)
           gradient.addColorStop(1, 'rgba(255, 255, 255, 0)')
           ctx.fillStyle = gradient
           ctx.beginPath()

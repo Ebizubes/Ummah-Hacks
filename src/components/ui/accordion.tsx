@@ -44,7 +44,7 @@ const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps>(
     const isOpen = context.openItems.has(value)
 
     return (
-      <div ref={ref} className={cn('border rounded-lg', className)} {...props}>
+      <div ref={ref} className={cn('border', className)} {...props}>
         {React.Children.map(children, (child) => {
           if (React.isValidElement(child)) {
             return React.cloneElement(child, { value, isOpen } as any)
@@ -72,10 +72,11 @@ const AccordionTrigger = React.forwardRef<HTMLButtonElement, AccordionTriggerPro
         ref={ref}
         type="button"
         className={cn(
-          'flex w-full items-center justify-between p-4 text-left font-medium transition-all duration-200 ease-in-out hover:bg-accent [&[data-state=open]>svg]:rotate-180',
+          'flex w-full items-center justify-between p-4 text-left font-medium transition-all duration-200 ease-in-out hover:bg-accent active:bg-accent [&[data-state=open]>svg]:rotate-180 touch-manipulation',
           className
         )}
         onClick={() => context.toggleItem(value)}
+        style={{ WebkitTapHighlightColor: 'transparent', minHeight: '44px' }}
         {...props}
       >
         {children}

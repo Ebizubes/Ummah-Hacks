@@ -1,5 +1,6 @@
 import { Instagram } from 'lucide-react'
 import { siteConfig } from '@/siteConfig'
+import { FadedStarsBackground } from './FadedStarsBackground'
 
 export function Footer() {
   const socialLinks = [
@@ -8,37 +9,38 @@ export function Footer() {
 
   return (
     <>
-      {/* White separator line */}
-      <div className="w-full h-px bg-white"></div>
+      {/* Decorative separator */}
+      <div className="w-full h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent"></div>
       
-      <footer id="contact" className="bg-[hsl(222,47%,11%)] py-8 sm:py-12">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 items-start sm:items-center">
+      <footer id="contact" className="bg-navy-dark py-12 sm:py-16 relative overflow-hidden">
+        <FadedStarsBackground />
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
+          <div className="max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-10 items-start">
               
               {/* Email Section */}
-              <div className="text-center sm:text-left space-y-2">
-                <h3 className="text-base sm:text-lg font-bold text-white mb-2 sm:mb-3">Contact</h3>
+              <div className="text-center sm:text-left space-y-3">
+                <h3 className="font-display text-lg font-bold text-gold mb-4">Contact</h3>
                 <div className="space-y-2">
                   <a 
                     href={`mailto:${siteConfig.email}`} 
-                    className="block text-sm sm:text-base text-white hover:text-[hsl(43,96%,56%)] transition-colors break-all"
+                    className="block font-sans text-sm sm:text-base text-white/90 hover:text-gold transition-colors break-all"
                   >
                     {siteConfig.email}
                   </a>
                   <a 
                     href="mailto:afifasiddiqua24@gmail.com" 
-                    className="block text-xs sm:text-sm text-white hover:text-[hsl(43,96%,56%)] transition-colors break-all"
+                    className="block font-sans text-xs sm:text-sm text-white/80 hover:text-gold transition-colors break-all"
                   >
                     afifasiddiqua24@gmail.com
-                    <span className="ml-2 text-xs text-white/70">(for sisters)</span>
+                    <span className="ml-2 text-xs text-white/60">(for sisters)</span>
                   </a>
                 </div>
               </div>
 
               {/* Social Media */}
               <div className="text-center">
-                <h3 className="text-base sm:text-lg font-bold text-white mb-2 sm:mb-3">Follow Us</h3>
+                <h3 className="font-display text-lg font-bold text-gold mb-4">Follow Us</h3>
                 <div className="flex justify-center space-x-6">
                   {socialLinks.map((social, index) => (
                     <a
@@ -47,10 +49,10 @@ export function Footer() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={social.label}
-                      className="flex flex-col items-center space-y-1 hover:opacity-80 transition-opacity"
+                      className="flex flex-col items-center space-y-2 hover:text-gold transition-colors group"
                     >
-                      <social.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                      <span className="text-white text-xs">{social.label}</span>
+                      <social.icon className="w-6 h-6 sm:w-7 sm:h-7 text-white/90 group-hover:text-gold transition-colors" />
+                      <span className="font-display text-white/80 text-xs group-hover:text-gold transition-colors">{social.label}</span>
                     </a>
                   ))}
                 </div>
@@ -62,7 +64,7 @@ export function Footer() {
                   href={siteConfig.lumaLink} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="inline-block bg-[hsl(43,96%,56%)] text-[hsl(222,47%,11%)] px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base font-bold hover:bg-[hsl(43,96%,50%)] transition-colors w-full sm:w-auto"
+                  className="inline-block bg-gold text-navy px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-display font-semibold active:bg-gold-dark hover:bg-gold-light transition-all shadow-lg hover:shadow-xl touch-manipulation min-h-[44px] flex items-center justify-center"
                 >
                   APPLY NOW
                 </a>
@@ -71,20 +73,20 @@ export function Footer() {
             </div>
 
             {/* Sponsor Button */}
-            <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-white/20 text-center">
+            <div className="mt-10 sm:mt-12 pt-6 sm:pt-8 border-t border-gold/30 text-center">
               <a 
                 href={siteConfig.sponsorLink || '#'} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-block border-2 border-[hsl(43,96%,56%)] text-[hsl(43,96%,56%)] px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-bold hover:bg-[hsl(43,96%,56%)] hover:text-[hsl(222,47%,11%)] transition-all duration-200"
+                className="inline-block border-2 border-gold text-gold px-8 sm:px-10 py-4 text-sm sm:text-base font-display font-semibold active:bg-gold/80 hover:bg-gold hover:text-navy transition-all duration-200 touch-manipulation min-h-[44px] flex items-center justify-center"
               >
                 SPONSOR US
               </a>
             </div>
 
             {/* Copyright */}
-            <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-white/20 text-center space-y-2">
-              <p className="text-white/60 text-xs sm:text-sm">
+            <div className="mt-8 sm:mt-10 pt-6 sm:pt-8 border-t border-gold/20 text-center">
+              <p className="font-sans text-white/60 text-xs sm:text-sm">
                 © {new Date().getFullYear()} {siteConfig.eventName}. All rights reserved.
               </p>
             </div>

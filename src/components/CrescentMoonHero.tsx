@@ -92,15 +92,30 @@ export function CrescentMoonHero() {
       }
     }
 
-    if (!isComplete) {
-      document.body.style.overflow = 'hidden'
-      window.addEventListener('wheel', handleWheel, { passive: false })
+    let mobileTimeout: NodeJS.Timeout | null = null
+
+    // On mobile, allow immediate scrolling - auto-complete hero after short delay
+    if (window.innerWidth < 1024) {
+      // Mobile: auto-complete after 1.5 seconds to allow normal scrolling
+      mobileTimeout = setTimeout(() => {
+        setIsComplete(true)
+        document.body.style.overflow = ''
+      }, 1500)
+    } else {
+      // Desktop: use wheel-based scroll animation
+      if (!isComplete) {
+        document.body.style.overflow = 'hidden'
+        window.addEventListener('wheel', handleWheel, { passive: false })
+      }
     }
 
     return () => {
       window.removeEventListener('resize', resizeCanvas)
       window.removeEventListener('wheel', handleWheel)
       cancelAnimationFrame(animationFrame)
+      if (mobileTimeout) {
+        clearTimeout(mobileTimeout)
+      }
       document.body.style.overflow = ''
     }
   }, [isComplete])
@@ -189,7 +204,7 @@ export function CrescentMoonHero() {
         {/* Title */}
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold text-white leading-tight">
+            <h1 className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold text-white leading-tight tracking-tight">
               UMMAH HACKS
             </h1>
           </div>
@@ -197,7 +212,7 @@ export function CrescentMoonHero() {
 
         {/* Scroll Down Indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/80 animate-bounce">
-          <span className="text-sm font-medium tracking-wide">SCROLL DOWN</span>
+          <span className="font-display text-sm font-medium tracking-wide">SCROLL DOWN</span>
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
