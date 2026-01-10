@@ -92,7 +92,7 @@ export function CrescentMoonHero() {
       }
     }
 
-    let mobileTimeout: NodeJS.Timeout | null = null
+    let mobileTimeout: number | null = null
 
     // On mobile, allow immediate scrolling - auto-complete hero after short delay
     if (window.innerWidth < 1024) {
