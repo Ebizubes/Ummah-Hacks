@@ -9,8 +9,10 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
-        serif: ['Inter', 'system-ui', 'sans-serif'],
-        brand: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+        serif: ['Crimson Text', 'Georgia', 'serif'],
+        heading: ['Playfair Display', 'Georgia', 'serif'],
+        brand: ['Space Grotesk', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: 'hsl(var(--border))',
@@ -41,6 +43,16 @@ export default {
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
+        },
+        navy: {
+          DEFAULT: 'hsl(var(--navy))',
+          light: 'hsl(var(--blue-light))',
+          dark: 'hsl(var(--blue-dark))',
+        },
+        gold: {
+          DEFAULT: 'hsl(var(--gold))',
+          light: 'hsl(var(--gold-light))',
+          dark: 'hsl(var(--gold-dark))',
         },
       },
       borderRadius: {

@@ -37,8 +37,8 @@ export function Navbar() {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`sticky top-0 z-50 bg-[hsl(222,47%,11%)] py-3 sm:py-4 md:py-6 px-4 sm:px-6 w-full ${
-        scrolled ? 'border-b border-white' : ''
+      className={`sticky top-0 z-50 bg-navy/95 backdrop-blur-md py-4 sm:py-5 md:py-6 px-4 sm:px-6 w-full ${
+        scrolled ? 'border-b border-gold/30 shadow-lg' : ''
       }`}
     >
       <div className="container mx-auto">
@@ -51,15 +51,22 @@ export function Navbar() {
                 e.preventDefault()
                 scrollTo('#hero')
               }}
-              className="text-white font-bold text-base sm:text-lg md:text-xl"
+              className="flex items-center gap-2 hover:opacity-80 transition-opacity"
             >
-              {siteConfig.eventName.toUpperCase()}
+              <img 
+                src="/ummah hacks logo.jpg" 
+                alt="UmmahHacks Logo" 
+                className="h-8 sm:h-10 md:h-12 w-auto object-contain"
+              />
+              <span className="font-display text-white font-bold text-lg sm:text-xl md:text-2xl tracking-tight hidden sm:inline">
+                {siteConfig.eventName.toUpperCase()}
+              </span>
             </a>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex justify-center flex-1">
-            <div className="flex justify-center space-x-8 lg:space-x-12 text-sm font-medium">
+            <div className="flex justify-center space-x-8 lg:space-x-12 text-sm font-display font-medium">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
@@ -68,7 +75,7 @@ export function Navbar() {
                     e.preventDefault()
                     scrollTo(link.href)
                   }}
-                  className="text-white hover:text-[hsl(43,96%,56%)] transition-colors"
+                  className="text-white/90 transition-colors tracking-wide"
                 >
                   {link.label.toUpperCase()}
                 </a>
@@ -81,7 +88,7 @@ export function Navbar() {
             <Button 
               size="sm" 
               onClick={() => scrollTo('#apply')}
-              className="bg-[hsl(43,96%,56%)] text-[hsl(222,47%,11%)] hover:bg-[hsl(43,96%,50%)] font-bold"
+              className="bg-gold text-navy hover:bg-gold-light active:bg-gold-dark font-display font-semibold px-6 py-2 shadow-lg hover:shadow-xl transition-all touch-manipulation min-h-[44px]"
             >
               Apply
             </Button>
@@ -89,9 +96,10 @@ export function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-white"
+            className="md:hidden p-2 text-white touch-manipulation min-w-[44px] min-h-[44px] flex items-center justify-center"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
+            style={{ WebkitTapHighlightColor: 'transparent' }}
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -105,23 +113,24 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[hsl(222,47%,11%)] border-t border-white"
+            className="md:hidden bg-navy/98 backdrop-blur-md border-t border-gold/30"
           >
-            <div className="container mx-auto px-4 py-3 sm:py-4 space-y-2 sm:space-y-3">
+            <div className="container mx-auto px-4 py-4 space-y-3">
               {navLinks.map((link) => (
                 <button
                   key={link.href}
                   onClick={() => scrollTo(link.href)}
-                  className="block w-full text-left text-xs sm:text-sm font-medium text-white hover:text-[hsl(43,96%,56%)] transition-colors py-2 sm:py-2.5"
+                  className="block w-full text-left text-sm font-display font-medium text-white/90 transition-colors py-3 tracking-wide touch-manipulation min-h-[44px]"
+                  style={{ WebkitTapHighlightColor: 'transparent' }}
                 >
                   {link.label.toUpperCase()}
                 </button>
               ))}
-              <div className="flex flex-col space-y-2 pt-3 sm:pt-4 border-t border-white/20">
+              <div className="flex flex-col space-y-2 pt-4 border-t border-gold/20">
                 <Button 
                   size="sm" 
                   onClick={() => scrollTo('#apply')}
-                  className="w-full bg-[hsl(43,96%,56%)] text-[hsl(222,47%,11%)] hover:bg-[hsl(43,96%,50%)] font-bold text-xs sm:text-sm"
+                  className="w-full bg-gold text-navy hover:bg-gold-light active:bg-gold-dark font-display font-semibold touch-manipulation min-h-[44px]"
                 >
                   Apply
                 </Button>

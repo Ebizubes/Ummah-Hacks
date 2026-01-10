@@ -47,7 +47,7 @@ export function StarsBackground() {
       
       for (let i = 0; i < numStars; i++) {
         const size = Math.random() * 1.5 + 0.5
-        const baseOpacity = Math.random() * 0.4 + 0.2 // Faded: 0.2 to 0.6
+        const baseOpacity = Math.random() * 0.4 + 0.5 // Brighter: 0.5 to 0.9
         stars.push({
           x: Math.random() * width,
           y: Math.random() * height,
@@ -89,11 +89,11 @@ export function StarsBackground() {
         const pulse = Math.sin(time * star.speed * 2 + index) * 0.2 + 0.8
         star.opacity = star.baseOpacity * twinkle * pulse
 
-        // Draw star with glow effect for larger stars
+        // Draw star with brighter glow effect for larger stars
         if (star.size > 1.2) {
           // Outer glow
           const gradient = ctx.createRadialGradient(star.x, star.y, 0, star.x, star.y, star.size * 3)
-          gradient.addColorStop(0, `rgba(255, 255, 255, ${star.opacity * 0.3})`)
+          gradient.addColorStop(0, `rgba(255, 255, 255, ${star.opacity * 0.6})`)
           gradient.addColorStop(1, 'rgba(255, 255, 255, 0)')
           ctx.fillStyle = gradient
           ctx.beginPath()
@@ -109,7 +109,7 @@ export function StarsBackground() {
 
         // Cross pattern for larger stars (more visible)
         if (star.size > 1.5 && star.opacity > 0.3) {
-          ctx.strokeStyle = `rgba(255, 255, 255, ${star.opacity * 0.5})`
+          ctx.strokeStyle = `rgba(255, 255, 255, ${star.opacity * 0.7})`
           ctx.lineWidth = 0.5
           ctx.beginPath()
           ctx.moveTo(star.x - star.size * 2, star.y)
