@@ -58,7 +58,7 @@ export function Navbar() {
                 alt="UmmahHacks Logo" 
                 className="h-8 sm:h-10 md:h-12 w-auto object-contain"
               />
-              <span className="font-display text-white font-bold text-lg sm:text-xl md:text-2xl hover:text-gold transition-colors tracking-tight hidden sm:inline">
+              <span className="font-display text-white font-bold text-lg sm:text-xl md:text-2xl tracking-tight hidden sm:inline">
                 {siteConfig.eventName.toUpperCase()}
               </span>
             </a>
@@ -75,7 +75,7 @@ export function Navbar() {
                     e.preventDefault()
                     scrollTo(link.href)
                   }}
-                  className="text-white/90 hover:text-gold transition-colors tracking-wide"
+                  className="text-white/90 transition-colors tracking-wide"
                 >
                   {link.label.toUpperCase()}
                 </a>
@@ -120,7 +120,7 @@ export function Navbar() {
                 <button
                   key={link.href}
                   onClick={() => scrollTo(link.href)}
-                  className="block w-full text-left text-sm font-display font-medium text-white/90 active:text-gold hover:text-gold transition-colors py-3 tracking-wide touch-manipulation min-h-[44px]"
+                  className="block w-full text-left text-sm font-display font-medium text-white/90 transition-colors py-3 tracking-wide touch-manipulation min-h-[44px]"
                   style={{ WebkitTapHighlightColor: 'transparent' }}
                 >
                   {link.label.toUpperCase()}

@@ -24,13 +24,13 @@ export function Footer() {
                 <div className="space-y-2">
                   <a 
                     href={`mailto:${siteConfig.email}`} 
-                    className="block font-sans text-sm sm:text-base text-white/90 hover:text-gold transition-colors break-all"
+                    className="block font-sans text-sm sm:text-base text-white/90 transition-colors break-all"
                   >
                     {siteConfig.email}
                   </a>
                   <a 
                     href="mailto:afifasiddiqua24@gmail.com" 
-                    className="block font-sans text-xs sm:text-sm text-white/80 hover:text-gold transition-colors break-all"
+                    className="block font-sans text-xs sm:text-sm text-white/80 transition-colors break-all"
                   >
                     afifasiddiqua24@gmail.com
                     <span className="ml-2 text-xs text-white/60">(for sisters)</span>
@@ -49,10 +49,10 @@ export function Footer() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={social.label}
-                      className="flex flex-col items-center space-y-2 hover:text-gold transition-colors group"
+                      className="flex flex-col items-center space-y-2 transition-colors group"
                     >
-                      <social.icon className="w-6 h-6 sm:w-7 sm:h-7 text-white/90 group-hover:text-gold transition-colors" />
-                      <span className="font-display text-white/80 text-xs group-hover:text-gold transition-colors">{social.label}</span>
+                      <social.icon className="w-6 h-6 sm:w-7 sm:h-7 text-white/90 transition-colors" />
+                      <span className="font-display text-white/80 text-xs transition-colors">{social.label}</span>
                     </a>
                   ))}
                 </div>
@@ -78,7 +78,7 @@ export function Footer() {
                 href={siteConfig.sponsorLink || '#'} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-block border-2 border-gold text-gold px-8 sm:px-10 py-4 text-sm sm:text-base font-display font-semibold active:bg-gold/80 hover:bg-gold hover:text-navy transition-all duration-200 touch-manipulation min-h-[44px] flex items-center justify-center"
+                className="inline-block border-2 border-gold text-white px-8 sm:px-10 py-4 text-sm sm:text-base font-display font-semibold transition-all duration-200 touch-manipulation min-h-[44px] flex items-center justify-center"
               >
                 SPONSOR US
               </a>

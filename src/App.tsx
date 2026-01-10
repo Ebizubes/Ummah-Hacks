@@ -141,7 +141,7 @@ function App() {
       <section id="about" className="min-h-screen flex items-center py-12 sm:py-16 md:py-20 lg:py-32 relative overflow-hidden" style={{ backgroundImage: 'url(/better banner.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
         <StarsBackground />
         <div className="absolute inset-0 bg-navy/80 backdrop-blur-sm"></div>
-        <div className="absolute inset-0 bg-gradient-to-br from-gold/10 via-transparent to-gold/5"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-transparent"></div>
         
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="max-w-5xl mx-auto space-y-12 md:space-y-16">
@@ -149,19 +149,19 @@ function App() {
               <h1 className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-4 tracking-tight drop-shadow-lg">
                 About
               </h1>
-              <div className="w-24 h-1 bg-gold mx-auto"></div>
+              <div className="w-24 h-1 bg-white/30 mx-auto"></div>
             </div>
 
             <div className="space-y-12 md:space-y-16">
               <div className="bg-white/5 backdrop-blur-sm border border-gold/20 p-6 sm:p-8 md:p-12 shadow-2xl">
-                <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-semibold text-gold mb-4 sm:mb-6">The Problem</h2>
+                <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-semibold text-white mb-4 sm:mb-6">The Problem</h2>
                 <p className="font-serif text-base sm:text-lg md:text-xl leading-relaxed text-white/90 max-w-4xl">
                   Muslim students and professionals face barriers in tech: lack of representation, limited networking opportunities, and few spaces that align with their values. Traditional hackathons often miss the unique perspectives and ethical frameworks that Muslim talent brings to innovation.
                 </p>
               </div>
               
               <div className="bg-white/5 backdrop-blur-sm border border-gold/20 p-6 sm:p-8 md:p-12 shadow-2xl">
-                <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-semibold text-gold mb-4 sm:mb-6">The Solution</h2>
+                <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-semibold text-white mb-4 sm:mb-6">The Solution</h2>
                 <p className="font-serif text-base sm:text-lg md:text-xl leading-relaxed text-white/90 max-w-4xl">
                   UmmahHacks bridges this gap by creating North America's premier Muslim-led hackathon. We provide a platform where faith meets innovation, where students showcase value-driven talent, where founders discover exceptional hires, and where bold ideas transform into real-world impact—all rooted in Islamic principles and open to everyone.
                 </p>
@@ -207,25 +207,25 @@ function App() {
               <p className="font-sans text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
                 Choose your track and build solutions that create meaningful impact
               </p>
-              <div className="w-24 h-1 bg-gold mx-auto mt-6"></div>
+              <div className="w-24 h-1 bg-white/30 mx-auto mt-6"></div>
             </div>
 
             <div className="grid gap-4 sm:gap-6 md:gap-8 md:grid-cols-1 lg:grid-cols-2">
               {siteConfig.hackathonTracks.map((track) => (
                 <div 
                   key={track.id} 
-                  className="group bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-gold/30 p-5 sm:p-6 md:p-8 active:border-gold/60 hover:border-gold/60 hover:shadow-2xl hover:shadow-gold/20 transition-all duration-300"
+                  className="group bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-gold/30 p-5 sm:p-6 md:p-8 transition-all duration-300"
                 >
-                  <h3 className="font-display text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4 group-hover:text-gold transition-colors">
+                  <h3 className="font-display text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4">
                     {track.title}
                   </h3>
                   <div className="space-y-2 sm:space-y-3">
                     <div>
-                      <span className="font-display text-xs sm:text-sm font-semibold text-gold uppercase tracking-wide">Purpose:</span>
+                      <span className="font-display text-xs sm:text-sm font-semibold text-white uppercase tracking-wide">Purpose:</span>
                       <p className="font-sans text-sm sm:text-base text-white/90 mt-1 leading-relaxed">{track.purpose}</p>
                     </div>
                     <div>
-                      <span className="font-display text-xs sm:text-sm font-semibold text-gold uppercase tracking-wide">Challenge:</span>
+                      <span className="font-display text-xs sm:text-sm font-semibold text-white uppercase tracking-wide">Challenge:</span>
                       <p className="font-sans text-sm sm:text-base text-white/80 mt-1 leading-relaxed">{track.challenge}</p>
                     </div>
                   </div>
@@ -262,7 +262,7 @@ function App() {
       {/* Schedule Section - Clean minimal theme */}
       <section id="schedule" className="min-h-screen flex items-center py-12 sm:py-16 md:py-20 lg:py-32 bg-gradient-to-b from-navy-light via-navy to-navy-dark relative overflow-hidden">
         <FadedStarsBackground />
-        <div className="absolute inset-0 bg-gradient-to-bl from-gold/5 via-transparent to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-bl from-transparent via-transparent to-transparent"></div>
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="max-w-5xl mx-auto space-y-12 md:space-y-16">
             <div className="text-center">
@@ -272,37 +272,13 @@ function App() {
               <p className="font-sans text-lg md:text-xl text-white/80 mb-6">
                 Saturday, January 24 - Sunday, January 25 • 36 hours of innovation
               </p>
-              <div className="w-24 h-1 bg-gold mx-auto"></div>
+              <div className="w-24 h-1 bg-white/30 mx-auto"></div>
             </div>
 
-            <div className="mt-8 sm:mt-12 md:mt-16">
-              <div className="relative bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-md border border-gold/30 p-6 sm:p-8 md:p-12 lg:p-16 shadow-2xl">
-                <div className="text-center space-y-6">
-                  <div className="flex justify-center mb-6">
-                    <div className="relative">
-                      <div className="absolute inset-0 bg-gold/30 rounded-full blur-2xl animate-pulse"></div>
-                      <div className="relative bg-gold/10 border-2 border-gold/40 rounded-full p-8">
-                        <svg className="w-16 h-16 md:w-20 md:h-20 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white">
-                    Schedule Coming Soon
-                  </h2>
-                  <p className="font-serif text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">
-                    We're finalizing workshops, activities, and speaker sessions. Check back soon for the complete schedule!
-                  </p>
-                  
-                  <div className="flex justify-center gap-3 mt-8">
-                    <div className="w-3 h-3 bg-gold rounded-full animate-pulse"></div>
-                    <div className="w-3 h-3 bg-gold rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
-                    <div className="w-3 h-3 bg-gold rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
-                  </div>
-                </div>
-              </div>
+            <div className="mt-8 sm:mt-12 md:mt-16 text-center">
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white">
+                Coming Soon
+              </h2>
             </div>
           </div>
         </div>
@@ -334,7 +310,7 @@ function App() {
       {/* Speakers/Judges Section - Elegant card theme */}
       <section id="speakers" className="min-h-screen flex items-center py-12 sm:py-16 md:py-20 lg:py-32 bg-gradient-to-b from-navy-dark via-navy-light to-navy relative overflow-hidden">
         <FadedStarsBackground />
-        <div className="absolute inset-0 bg-gradient-to-tr from-gold/5 via-transparent to-gold/10"></div>
+        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-transparent to-transparent"></div>
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="max-w-6xl mx-auto space-y-12 md:space-y-16">
             <div className="text-center">
@@ -344,22 +320,22 @@ function App() {
               <p className="font-sans text-lg md:text-xl text-white/80 mb-6">
                 Learn from industry leaders and get feedback from expert judges
               </p>
-              <div className="w-24 h-1 bg-gold mx-auto"></div>
+              <div className="w-24 h-1 bg-white/30 mx-auto"></div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 md:gap-10 max-w-4xl mx-auto">
               {siteConfig.speakers.map((speaker, index) => (
                 <div 
                   key={index} 
-                  className="group bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-gold/30 p-5 sm:p-6 md:p-8 text-center active:border-gold/60 hover:border-gold/60 hover:shadow-2xl hover:shadow-gold/20 transition-all duration-300"
+                  className="group bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-gold/30 p-5 sm:p-6 md:p-8 text-center transition-all duration-300"
                 >
                   <div className="flex justify-center mb-4 sm:mb-6">
                     <div className="relative">
-                      <div className="absolute inset-0 bg-gold/20 rounded-full blur-xl group-hover:blur-2xl transition-all"></div>
+                      <div className="absolute inset-0 bg-white/10 rounded-full blur-xl transition-all"></div>
                       <img 
                         src={speaker.avatar} 
                         alt={speaker.name}
-                        className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-full object-cover border-4 border-gold/40 group-hover:border-gold transition-all shadow-xl"
+                        className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-full object-cover border-4 border-gold/40 transition-all shadow-xl"
                         loading="lazy"
                         onError={() => {
                           console.error('Failed to load image:', speaker.avatar);
@@ -368,10 +344,10 @@ function App() {
                       />
                     </div>
                   </div>
-                  <h3 className="font-display text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2 group-hover:text-gold transition-colors">
+                  <h3 className="font-display text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2">
                     {speaker.name}
                   </h3>
-                  <p className="font-sans text-sm sm:text-base text-gold/90 mb-1">{speaker.role}</p>
+                  <p className="font-sans text-sm sm:text-base text-white/90 mb-1">{speaker.role}</p>
                   {speaker.company && (
                     <p className="font-serif text-xs sm:text-sm text-white/60 mb-3 sm:mb-4">{speaker.company}</p>
                   )}
@@ -380,7 +356,7 @@ function App() {
                       href={speaker.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-gold active:text-gold-light hover:text-gold-light transition-colors font-display text-xs sm:text-sm font-medium touch-manipulation min-h-[44px]"
+                      className="inline-flex items-center gap-2 text-white transition-colors font-display text-xs sm:text-sm font-medium touch-manipulation min-h-[44px]"
                     >
                       <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
@@ -401,7 +377,7 @@ function App() {
       {/* FAQ Section - Clean readable theme */}
       <section id="faq" className="min-h-screen flex items-center py-12 sm:py-16 md:py-20 lg:py-32 bg-gradient-to-b from-navy-light via-navy to-navy-dark relative overflow-hidden">
         <FadedStarsBackground />
-        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-gold/5 to-gold/10"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-transparent"></div>
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="max-w-4xl mx-auto space-y-12 md:space-y-16">
             <div className="text-center">
@@ -411,7 +387,7 @@ function App() {
               <p className="font-sans text-lg md:text-xl text-white/80 mb-6">
                 Everything you need to know about UmmahHacks
               </p>
-              <div className="w-24 h-1 bg-gold mx-auto"></div>
+              <div className="w-24 h-1 bg-white/30 mx-auto"></div>
             </div>
 
             <div className="bg-white/5 backdrop-blur-sm border border-gold/20 p-8 md:p-12 shadow-xl">
@@ -427,7 +403,7 @@ function App() {
       {/* CTA Section - Bold energetic theme */}
       <section id="apply" className="min-h-screen flex items-center py-12 sm:py-16 md:py-20 lg:py-32 bg-gradient-to-b from-navy-dark via-navy to-navy-light relative overflow-hidden">
         <FadedStarsBackground />
-        <div className="absolute inset-0 bg-gradient-to-tr from-gold/10 via-transparent to-gold/5"></div>
+        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-transparent to-transparent"></div>
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-10 md:space-y-12">
             <div>
@@ -451,17 +427,17 @@ function App() {
                 size="lg"
                 variant="outline"
                 onClick={() => window.open(siteConfig.discordLink, '_blank')}
-                className="w-full sm:w-auto border-2 border-gold text-gold hover:bg-gold active:bg-gold/80 hover:text-navy font-display text-base sm:text-lg font-semibold px-6 sm:px-8 py-4 sm:py-6 transition-all touch-manipulation min-h-[44px]"
+                className="w-full sm:w-auto border-2 border-gold text-white font-display text-base sm:text-lg font-semibold px-6 sm:px-8 py-4 sm:py-6 transition-all touch-manipulation min-h-[44px]"
               >
                 Join Discord
               </Button>
             </div>
             
             <div className="pt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
-              <Badge variant="outline" className="border-gold/50 text-gold bg-gold/10 font-display px-4 py-2 text-sm">
+              <Badge variant="outline" className="border-gold/50 text-white bg-gold/10 font-display px-4 py-2 text-sm">
                 Prayer Space Available
               </Badge>
-              <Badge variant="outline" className="border-gold/50 text-gold bg-gold/10 font-display px-4 py-2 text-sm">
+              <Badge variant="outline" className="border-gold/50 text-white bg-gold/10 font-display px-4 py-2 text-sm">
                 Dietary Accommodations (Halal/Veg)
               </Badge>
             </div>
