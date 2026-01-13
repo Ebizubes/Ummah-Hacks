@@ -211,26 +211,34 @@ function App() {
             </div>
 
             <div className="grid gap-4 sm:gap-6 md:gap-8 md:grid-cols-1 lg:grid-cols-2">
-              {siteConfig.hackathonTracks.map((track) => (
-                <div 
-                  key={track.id} 
-                  className="group bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-gold/30 p-5 sm:p-6 md:p-8 transition-all duration-300"
-                >
-                  <h3 className="font-display text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4">
-                    {track.title}
-                  </h3>
-                  <div className="space-y-2 sm:space-y-3">
-                    <div>
-                      <span className="font-display text-xs sm:text-sm font-semibold text-white uppercase tracking-wide">Purpose:</span>
-                      <p className="font-sans text-sm sm:text-base text-white/90 mt-1 leading-relaxed">{track.purpose}</p>
-                    </div>
-                    <div>
-                      <span className="font-display text-xs sm:text-sm font-semibold text-white uppercase tracking-wide">Challenge:</span>
-                      <p className="font-sans text-sm sm:text-base text-white/80 mt-1 leading-relaxed">{track.challenge}</p>
+              {siteConfig.hackathonTracks.map((track, index) => {
+                const isLast = index === siteConfig.hackathonTracks.length - 1
+                const isOddTotal = siteConfig.hackathonTracks.length % 2 !== 0
+                const shouldCenter = isLast && isOddTotal
+                
+                return (
+                  <div 
+                    key={track.id} 
+                    className={`group bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-gold/30 p-5 sm:p-6 md:p-8 transition-all duration-300 ${
+                      shouldCenter ? 'lg:col-span-2 lg:max-w-2xl lg:mx-auto' : ''
+                    }`}
+                  >
+                    <h3 className="font-display text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4">
+                      {track.title}
+                    </h3>
+                    <div className="space-y-2 sm:space-y-3">
+                      <div>
+                        <span className="font-display text-xs sm:text-sm font-semibold text-white uppercase tracking-wide">Purpose:</span>
+                        <p className="font-sans text-sm sm:text-base text-white/90 mt-1 leading-relaxed">{track.purpose}</p>
+                      </div>
+                      <div>
+                        <span className="font-display text-xs sm:text-sm font-semibold text-white uppercase tracking-wide">Challenge:</span>
+                        <p className="font-sans text-sm sm:text-base text-white/80 mt-1 leading-relaxed">{track.challenge}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                )
+              })}
             </div>
           </div>
         </div>
