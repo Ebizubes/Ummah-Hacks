@@ -354,10 +354,60 @@ export const siteConfig = {
     },
   ],
   sponsors: [
-    { name: 'TechCorp', logo: '🏢' },
-    { name: 'InnovateLab', logo: '🔬' },
-    { name: 'StartupHub', logo: '🚀' },
-    { name: 'CodeForGood', logo: '💻' },
-    { name: 'FutureVentures', logo: '🌟' },
+    {
+      name: 'VePay',
+      logo: '/sponsors/vepay.jpg',
+      tier: 'tier1',
+      url: 'https://example.com/vepay',
+    },
+    {
+      name: 'Ummah1',
+      logo: '/sponsors/ummah_1.jpg',
+      tier: 'tier1',
+      url: 'https://ummah1.com',
+      description: 'Ummah1 is a platform for empowering startups, fueling growth from seed to success. ',
+    },
+    {
+      name: 'Automax AI',
+      logo: '/sponsors/automax_ai.jpg',
+      tier: 'tier1',
+      url: 'https://automax.ai/',
+      description: 'Automax AI is building AI for better transparency and accuracy in property valuations ',
+    },
+    {
+      name: 'Insforge',
+      logo: '/sponsors/insforge_logo.jpg',
+      tier: 'tier2',
+      url: 'https://insforge.dev/',
+      description: 'Insforge is building the first backend for AI agents',
+    },
+    {
+      name: 'Breakthrough Ventures',
+      logo: '/sponsors/breakthrough_ventures.jpg',
+      tier: 'tier3',
+      url: 'breakvc.com',
+      description: 'Breakthrough Ventures is a venture capital firm that invests in early-stage student-led startups',
+    },
+    {
+      name: 'ASL Aspire',
+      logo: '/sponsors/asl_aspire_logo.jpg',
+      tier: 'tier3',
+      url: 'https://aslaspire.com/',
+      description:" ASL Aspire is an online educational platform that teaches STEM literacy to deaf students and their teachers."
+    },
+    {
+      name: 'Amano',
+      logo: '/sponsors/amano.jpg',
+      tier: 'tier3',
+      url: 'amanolabs.com',
+      description: "Amano designs pratical solutions for neurological technologies"
+    },
+    {
+      name:"Hex Security",
+      logo: '/sponsors/hex_security_logo.jpg',
+      tier: 'tier3',
+      url: 'https://hex.co',
+      description: "Peneration testing using autonomus AI agents"
+    }
   ],
 }

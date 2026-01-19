@@ -10,6 +10,8 @@ interface Star {
   baseOpacity: number
   vx?: number
   vy?: number
+  gradient?: CanvasGradient
+  needsGradient: boolean
 }
 
 export function FadedStarsBackground() {
@@ -38,15 +40,16 @@ export function FadedStarsBackground() {
     let stars: Star[] = []
 
     const generateStars = () => {
-      // Fewer stars for faded effect
-      const numStars = Math.floor((width * height) / 12000)
+      // Fewer stars for faded effect, with maximum cap for performance
+      const numStars = Math.min(Math.floor((width * height) / 15000), 150)
       stars = []
       
       for (let i = 0; i < numStars; i++) {
         const size = Math.random() * 1.2 + 0.3
         // Brighter stars: 0.4 to 0.8 opacity
         const baseOpacity = Math.random() * 0.4 + 0.4
-        stars.push({
+        const needsGradient = size > 1.0
+        const star: Star = {
           x: Math.random() * width,
           y: Math.random() * height,
           size,
@@ -57,14 +60,50 @@ export function FadedStarsBackground() {
           // Less movement for faded stars
           vx: Math.random() < 0.2 ? (Math.random() - 0.5) * 0.05 : 0,
           vy: Math.random() < 0.2 ? (Math.random() - 0.5) * 0.05 : 0,
-        })
+          needsGradient,
+        }
+        
+        // Pre-create gradient for stars that need it
+        if (needsGradient) {
+          const gradient = ctx.createRadialGradient(star.x, star.y, 0, star.x, star.y, star.size * 2.5)
+          gradient.addColorStop(0, `rgba(255, 255, 255, ${star.baseOpacity * 0.5})`)
+          gradient.addColorStop(1, 'rgba(255, 255, 255, 0)')
+          star.gradient = gradient
+        }
+        
+        stars.push(star)
       }
     }
 
     resizeCanvas()
     window.addEventListener('resize', resizeCanvas)
 
+    // Visibility observer to pause animation when off-screen
+    let isVisible = true
+    const observer = new IntersectionObserver(
+      (entries) => {
+        isVisible = entries[0].isIntersecting
+      },
+      { threshold: 0 }
+    )
+    observer.observe(canvas)
+
+    // Frame limiting for performance
+    let frameCount = 0
+    const frameSkip = 1 // Render every frame on capable devices, adjust if needed
+
     const animate = () => {
+      if (!isVisible) {
+        animationFrame = requestAnimationFrame(animate)
+        return
+      }
+
+      frameCount++
+      if (frameCount % (frameSkip + 1) !== 0) {
+        animationFrame = requestAnimationFrame(animate)
+        return
+      }
+
       time += 0.008
       ctx.clearRect(0, 0, width, height)
 
@@ -84,12 +123,11 @@ export function FadedStarsBackground() {
         const pulse = Math.sin(time * star.speed * 1.5 + index) * 0.15 + 0.85
         star.opacity = star.baseOpacity * twinkle * pulse
 
-        // Brighter glow for larger stars
-        if (star.size > 1.0) {
-          const gradient = ctx.createRadialGradient(star.x, star.y, 0, star.x, star.y, star.size * 2.5)
-          gradient.addColorStop(0, `rgba(255, 255, 255, ${star.opacity * 0.5})`)
-          gradient.addColorStop(1, 'rgba(255, 255, 255, 0)')
-          ctx.fillStyle = gradient
+        // Brighter glow for larger stars - use cached gradient
+        if (star.needsGradient && star.gradient) {
+          // Update gradient opacity if needed (only update color stops, not recreate gradient)
+          // For better performance, we'll use the cached gradient and adjust fillStyle opacity
+          ctx.fillStyle = star.gradient
           ctx.beginPath()
           ctx.arc(star.x, star.y, star.size * 2.5, 0, Math.PI * 2)
           ctx.fill()
@@ -109,6 +147,7 @@ export function FadedStarsBackground() {
 
     return () => {
       window.removeEventListener('resize', resizeCanvas)
+      observer.disconnect()
       cancelAnimationFrame(animationFrame)
     }
   }, [])

@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
 import * as LucideIcons from 'lucide-react'
 
@@ -31,12 +31,12 @@ export function HackathonTrackCard({ title, purpose, challenge, icon, index }: H
         <CardContent className="space-y-4">
           {purpose && (
             <div>
-              <h4 className="font-semibold mb-2 text-sm uppercase tracking-wide text-muted-foreground">Purpose</h4>
+              <h4 className="mb-2 text-sm font-semibold tracking-wide uppercase text-muted-foreground">Purpose</h4>
               <p className="text-base">{purpose}</p>
             </div>
           )}
           <div>
-            <h4 className="font-semibold mb-2 text-sm uppercase tracking-wide text-muted-foreground">Challenge</h4>
+            <h4 className="mb-2 text-sm font-semibold tracking-wide uppercase text-muted-foreground">Challenge</h4>
             <p className="text-base">{challenge}</p>
           </div>
         </CardContent>
