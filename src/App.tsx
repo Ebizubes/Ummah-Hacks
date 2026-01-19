@@ -16,11 +16,29 @@ function App() {
   const [showSecretMessage, setShowSecretMessage] = useState(false)
   const [currentSpeakerIndex, setCurrentSpeakerIndex] = useState(0)
 
+  // Calculate how many speakers to show at once (responsive)
+  const getSpeakersPerView = () => {
+    if (typeof window === 'undefined') return 3
+    if (window.innerWidth >= 1024) return 4 // lg screens: 4 speakers
+    if (window.innerWidth >= 768) return 3  // md screens: 3 speakers
+    return 2 // sm screens: 2 speakers
+  }
+
+  const [speakersPerView, setSpeakersPerView] = useState(getSpeakersPerView())
+
+  useEffect(() => {
+    const handleResize = () => {
+      setSpeakersPerView(getSpeakersPerView())
+    }
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   // Auto-rotate carousel
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSpeakerIndex((prev) => (prev === siteConfig.speakers.length - 1 ? 0 : prev + 1))
-    }, 5000) // Change speaker every 5 seconds
+    }, 5000) // Change every 5 seconds
 
     return () => clearInterval(interval)
   }, [])
@@ -344,68 +362,90 @@ function App() {
             </div>
 
             {/* Carousel */}
-            <div className="relative max-w-md mx-auto">
-              <div className="relative overflow-hidden rounded-lg">
+            <div className="relative max-w-6xl mx-auto">
+              <div className="relative overflow-hidden">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currentSpeakerIndex}
-                    initial={{ opacity: 0, x: 100 }}
+                    initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -100 }}
+                    exit={{ opacity: 0, x: -50 }}
                     transition={{ duration: 0.3 }}
-                    className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-gold/30 p-6 sm:p-8 text-center"
+                    className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6"
                   >
-                    <div className="flex justify-center mb-4">
-                      <div className="relative overflow-hidden rounded-full">
-                        <div className="absolute inset-0 bg-white/10 rounded-full blur-xl transition-all"></div>
-                        <img 
-                          src={siteConfig.speakers[currentSpeakerIndex].avatar} 
-                          alt={siteConfig.speakers[currentSpeakerIndex].name}
-                          className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full object-cover object-center border-4 border-gold/40 transition-all shadow-xl"
-                          loading="lazy"
-                          onError={() => {
-                            console.error('Failed to load image:', siteConfig.speakers[currentSpeakerIndex].avatar);
-                            console.error('Speaker:', siteConfig.speakers[currentSpeakerIndex].name);
-                          }}
-                        />
-                      </div>
-                    </div>
-                    <h3 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2">
-                      {siteConfig.speakers[currentSpeakerIndex].name}
-                    </h3>
-                    <p className="font-sans text-base sm:text-lg text-white/90">{siteConfig.speakers[currentSpeakerIndex].role}</p>
+                    {Array.from({ length: speakersPerView }).map((_, index) => {
+                      const speakerIndex = (currentSpeakerIndex + index) % siteConfig.speakers.length
+                      const speaker = siteConfig.speakers[speakerIndex]
+                      return (
+                        <div
+                          key={`${currentSpeakerIndex}-${index}`}
+                          className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-gold/30 p-4 sm:p-6 text-center transition-all duration-300"
+                        >
+                          <div className="flex justify-center mb-3 sm:mb-4">
+                            <div className="relative overflow-hidden rounded-full">
+                              <div className="absolute inset-0 bg-white/10 rounded-full blur-xl transition-all"></div>
+                              <img 
+                                src={speaker.avatar} 
+                                alt={speaker.name}
+                                className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full object-cover object-center border-4 border-gold/40 transition-all shadow-xl"
+                                loading="lazy"
+                                onError={() => {
+                                  console.error('Failed to load image:', speaker.avatar);
+                                  console.error('Speaker:', speaker.name);
+                                }}
+                              />
+                            </div>
+                          </div>
+                          <h3 className="font-display text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 sm:mb-2">
+                            {speaker.name}
+                          </h3>
+                          <p className="font-sans text-sm sm:text-base text-white/90">{speaker.role}</p>
+                        </div>
+                      )
+                    })}
                   </motion.div>
                 </AnimatePresence>
               </div>
 
               {/* Navigation Arrows */}
               <button
-                onClick={() => setCurrentSpeakerIndex((prev) => (prev === 0 ? siteConfig.speakers.length - 1 : prev - 1))}
-                className="absolute left-0 sm:-left-12 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-gold/30 rounded-full p-2 sm:p-3 transition-all text-white"
-                aria-label="Previous speaker"
+                onClick={() => {
+                  setCurrentSpeakerIndex((prev) => (prev === 0 ? siteConfig.speakers.length - 1 : prev - 1))
+                }}
+                className="absolute left-0 sm:-left-12 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-gold/30 rounded-full p-2 sm:p-3 transition-all text-white z-10"
+                aria-label="Previous speakers"
               >
                 <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
               <button
-                onClick={() => setCurrentSpeakerIndex((prev) => (prev === siteConfig.speakers.length - 1 ? 0 : prev + 1))}
-                className="absolute right-0 sm:-right-12 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-gold/30 rounded-full p-2 sm:p-3 transition-all text-white"
-                aria-label="Next speaker"
+                onClick={() => {
+                  setCurrentSpeakerIndex((prev) => (prev === siteConfig.speakers.length - 1 ? 0 : prev + 1))
+                }}
+                className="absolute right-0 sm:-right-12 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-gold/30 rounded-full p-2 sm:p-3 transition-all text-white z-10"
+                aria-label="Next speakers"
               >
                 <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
 
               {/* Dots Indicator */}
               <div className="flex justify-center gap-2 mt-6">
-                {siteConfig.speakers.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentSpeakerIndex(index)}
-                    className={`w-2 h-2 rounded-full transition-all ${
-                      index === currentSpeakerIndex ? 'bg-gold w-8' : 'bg-white/30'
-                    }`}
-                    aria-label={`Go to speaker ${index + 1}`}
-                  />
-                ))}
+                {siteConfig.speakers.map((_, index) => {
+                  // Check if this speaker is currently visible
+                  const isVisible = Array.from({ length: speakersPerView }).some((_, i) => {
+                    const speakerIndex = (currentSpeakerIndex + i) % siteConfig.speakers.length
+                    return speakerIndex === index
+                  })
+                  return (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentSpeakerIndex(index)}
+                      className={`h-2 rounded-full transition-all ${
+                        isVisible ? 'bg-gold w-3' : 'bg-white/30 w-2'
+                      }`}
+                      aria-label={`Go to speaker ${index + 1}`}
+                    />
+                  )
+                })}
               </div>
             </div>
           </div>

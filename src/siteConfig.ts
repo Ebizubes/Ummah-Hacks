@@ -78,6 +78,41 @@ export const siteConfig = {
       avatar: '/speakers/Nader.jpeg',
       linkedin: 'https://www.linkedin.com/in/naderlikeladder/',
     },
+    { 
+      name: 'Nabeeha Ahmed', 
+      role: 'Speaker/Judge', 
+      company: 'Microsoft', 
+      avatar: '/speakers/Nabeeha.jpeg',
+      linkedin: 'https://www.linkedin.com/in/nabeeha-ahmed/',
+    },
+    { 
+      name: 'Shaden Awad', 
+      role: 'Speaker/Judge', 
+      company: '', 
+      avatar: '/speakers/Shaden.jpeg',
+      linkedin: 'https://www.linkedin.com/in/shaden-awad-a45b421b6/',
+    },
+    { 
+      name: 'Tabassum Pasha', 
+      role: 'Speaker/Judge', 
+      company: '', 
+      avatar: '/speakers/Tabassum.jpeg',
+      linkedin: 'https://www.linkedin.com/in/tabassum-pasha/',
+    },
+    { 
+      name: 'Ali Khani', 
+      role: 'Speaker/Judge', 
+      company: '', 
+      avatar: '/speakers/Ali.jpeg',
+      linkedin: 'https://www.linkedin.com/in/khvni/',
+    },
+    { 
+      name: 'Safi Qadir', 
+      role: 'Speaker/Judge', 
+      company: '', 
+      avatar: '/speakers/Safi.jpeg',
+      linkedin: 'https://www.linkedin.com/in/safizaq/',
+    },
   ],
   schedule: {
     day1: [
