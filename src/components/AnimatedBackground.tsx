@@ -1,8 +1,8 @@
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 
 export function AnimatedBackground() {
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <div className="overflow-hidden absolute inset-0 pointer-events-none">
       {/* Golden gradient orbs */}
       <motion.div
         className="absolute top-20 left-10 w-72 h-72 bg-[hsl(43,96%,56%)]/10 rounded-full blur-3xl"

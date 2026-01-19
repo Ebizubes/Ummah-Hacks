@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useMemo, useCallback } from 'react'
+import { useEffect, useRef, useState, useMemo } from 'react'
 
 export function CrescentMoonHero() {
   const canvasRef = useRef<HTMLCanvasElement>(null)

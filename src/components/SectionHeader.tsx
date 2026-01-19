@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 
 interface SectionHeaderProps {
   title: string
@@ -15,8 +15,8 @@ export function SectionHeader({ title, subtitle, className }: SectionHeaderProps
       transition={{ duration: 0.5 }}
       className={className}
     >
-      <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">{title}</h2>
-      {subtitle && <p className="text-xl text-muted-foreground text-center max-w-2xl mx-auto">{subtitle}</p>}
+      <h2 className="mb-4 text-4xl font-bold text-center md:text-5xl">{title}</h2>
+      {subtitle && <p className="mx-auto max-w-2xl text-xl text-center text-muted-foreground">{subtitle}</p>}
     </motion.div>
   )
 }
