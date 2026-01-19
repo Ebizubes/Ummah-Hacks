@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 import { Button } from './ui/button'
 import { siteConfig } from '@/siteConfig'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'motion/react'
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -38,11 +38,10 @@ export function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`sticky top-0 z-50 bg-navy/95 backdrop-blur-md py-4 sm:py-5 md:py-6 px-4 sm:px-6 w-full ${
-        scrolled ? 'border-b border-gold/30 shadow-lg' : ''
-      }`}
+        scrolled ? 'border-b shadow-lg border-gold/30' : ''}`}
     >
       <div className="container mx-auto">
-        <div className="flex items-center justify-between w-full">
+        <div className="flex justify-between items-center w-full">
           {/* Logo */}
           <div className="flex items-center">
             <a
@@ -51,22 +50,22 @@ export function Navbar() {
                 e.preventDefault()
                 scrollTo('#hero')
               }}
-              className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+              className="flex gap-2 items-center transition-opacity hover:opacity-80"
             >
               <img 
                 src="/ummah hacks logo.jpg" 
                 alt="UmmahHacks Logo" 
-                className="h-8 sm:h-10 md:h-12 w-auto object-contain"
+                className="object-contain w-auto h-8 sm:h-10 md:h-12"
               />
-              <span className="font-display text-white font-bold text-lg sm:text-xl md:text-2xl tracking-tight hidden sm:inline">
+              <span className="hidden text-lg font-bold tracking-tight text-white font-display sm:text-xl md:text-2xl sm:inline">
                 {siteConfig.eventName.toUpperCase()}
               </span>
             </a>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex justify-center flex-1">
-            <div className="flex justify-center space-x-8 lg:space-x-12 text-sm font-display font-medium">
+          <nav className="hidden flex-1 justify-center md:flex">
+            <div className="flex justify-center space-x-8 text-sm font-medium lg:space-x-12 font-display">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
@@ -75,7 +74,7 @@ export function Navbar() {
                     e.preventDefault()
                     scrollTo(link.href)
                   }}
-                  className="text-white/90 transition-colors tracking-wide"
+                  className="tracking-wide transition-colors text-white/90"
                 >
                   {link.label.toUpperCase()}
                 </a>
@@ -84,7 +83,7 @@ export function Navbar() {
           </nav>
 
           {/* Desktop Apply Button */}
-          <div className="hidden md:flex justify-end">
+          <div className="hidden justify-end md:flex">
             <Button 
               size="sm" 
               onClick={() => scrollTo('#apply')}
@@ -101,7 +100,7 @@ export function Navbar() {
             aria-label="Toggle menu"
             style={{ WebkitTapHighlightColor: 'transparent' }}
           >
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </div>
@@ -113,9 +112,9 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-navy/98 backdrop-blur-md border-t border-gold/30"
+            className="border-t backdrop-blur-md md:hidden bg-navy/98 border-gold/30"
           >
-            <div className="container mx-auto px-4 py-4 space-y-3">
+            <div className="container px-4 py-4 mx-auto space-y-3">
               {navLinks.map((link) => (
                 <button
                   key={link.href}
@@ -126,7 +125,7 @@ export function Navbar() {
                   {link.label.toUpperCase()}
                 </button>
               ))}
-              <div className="flex flex-col space-y-2 pt-4 border-t border-gold/20">
+              <div className="flex flex-col pt-4 space-y-2 border-t border-gold/20">
                 <Button 
                   size="sm" 
                   onClick={() => scrollTo('#apply')}

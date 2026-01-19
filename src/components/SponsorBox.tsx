@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import CardFlip from './CardFlip'
 
 interface SponsorBoxProps {
   name: string
@@ -6,53 +6,66 @@ interface SponsorBoxProps {
   tier: 'tier1' | 'tier2' | 'tier3'
   url?: string
   className?: string
+  description?: string
 }
 
-export function SponsorBox({ name, logo, tier, url, className = '' }: SponsorBoxProps) {
-  
-
+export function SponsorBox({ name, logo, tier, url, className = '', description }: SponsorBoxProps) {
   const isTier1 = tier === 'tier1'
   const isTier2 = tier === 'tier2'
   
-  // Tier-specific styling
-  const tierStyles = isTier1 
-    ? 'border-2 border-gold shadow-2xl from-white/12 to-white/7 bg-gradient-to-br hover:scale-110' // Tier 1: Thickest border, strongest shadow
+  // Tier-specific border styling
+  const borderClass = isTier1 
+    ? 'border-2 border-gold' // Tier 1: Thickest border
     : isTier2 
-    ? 'border-2 border-gold/60 shadow-xl from-white/15 to-white/10 bg-gradient-to-br hover:scale-105' // Tier 2: Medium border, medium shadow, brighter background
-    : 'border border-gold/40 shadow-lg from-white/10 to-white/5 bg-gradient-to-br hover:scale-105' // Tier 3: Thinner border, lighter shadow
+    ? 'border-2 border-gold/60' // Tier 2: Medium border
+    : 'border border-gold/40' // Tier 3: Thinner border
   
-  const boxClasses = `
-    relative ${tierStyles} backdrop-blur-sm transition-all duration-300
-    hover:shadow-2xl
-    ${url ? 'cursor-pointer' : ''}
-    ${isTier1 ? 'p-8 sm:p-10 md:p-12' : isTier2 ? 'p-6 sm:p-8 md:p-10' : 'p-4 sm:p-6 md:p-8'}
-    ${className}
-  `
+  // Tier-specific background styling
+  const backgroundClass = isTier1 
+    ? 'bg-gradient-to-br from-white/12 to-white/7 backdrop-blur-sm' // Tier 1: Brightest background
+    : isTier2 
+    ? 'bg-gradient-to-br from-white/15 to-white/10 backdrop-blur-sm' // Tier 2: Medium background
+    : 'bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm' // Tier 3: Lighter background
+  
+  // Tier-specific height adjustments
+  const heightClass = isTier1 
+    ? 'h-[400px] max-w-[320px]' 
+    : isTier2 
+    ? 'h-[360px] max-w-[300px]' 
+    : 'h-[320px] max-w-[280px]'
+  
+  // Additional tier-specific styling
+  const tierStyles = isTier1 
+    ? 'shadow-2xl' // Tier 1: Strongest shadow
+    : isTier2 
+    ? 'shadow-xl' // Tier 2: Medium shadow
+    : 'shadow-lg' // Tier 3: Lighter shadow
+
+  // Default description based on tier if not provided
+  const sponsorDescription = description || 
+    (isTier1 ? 'Our premier sponsor supporting this event.' :
+     isTier2 ? 'A valued sponsor contributing to this event.' :
+     'A sponsor supporting this event.')
+
+  // Features can show tier information
+  const features = isTier1 
+    ? ['Premier Sponsor', 'Gold Tier', 'Major Supporter']
+    : isTier2
+    ? ['Silver Tier', 'Valued Partner']
+    : ['Bronze Tier', 'Community Supporter']
 
   return (
-    <div
-    className={boxClasses} 
-    
-    >
-      
-      
-      {/* Logo container */}
-      <div className={`flex items-center justify-center ${isTier1 ? 'h-36 sm:h-44 md:h-52' : isTier2 ? 'h-28 sm:h-36 md:h-40' : 'h-20 sm:h-24 md:h-28'}`}>
-        <img
-          src={logo}
-          alt={name}
-          className="object-contain max-w-full max-h-full"
-          loading="lazy"
-          onError={(e) => {
-            console.error('Failed to load sponsor logo:', logo)
-            const target = e.target as HTMLImageElement
-            target.style.display = 'none'
-          }}
-        />
-      </div>
-
-      {/* Optional: Sponsor name text (hidden by default, can be shown if needed) */}
-      {/* <p className="mt-2 text-xs font-semibold text-center text-white sm:text-sm">{name}</p> */}
-    </div>
+    <CardFlip
+      title={name}
+      subtitle={isTier1 ? 'Premier Sponsor' : isTier2 ? 'Silver Sponsor' : 'Bronze Sponsor'}
+      description={sponsorDescription}
+      features={features}
+      logo={logo}
+      logoAlt={name}
+      url={url}
+      className={`${tierStyles} ${heightClass} ${className}`}
+      borderClassName={borderClass}
+      backgroundClassName={backgroundClass}
+    />
   )
 }

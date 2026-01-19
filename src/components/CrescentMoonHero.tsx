@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useMemo, useCallback } from 'react'
 
 export function CrescentMoonHero() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -6,6 +6,7 @@ export function CrescentMoonHero() {
   const [scrollProgress, setScrollProgress] = useState(0)
   const [isComplete, setIsComplete] = useState(false)
   const scrollPositionRef = useRef(0)
+  const rafIdRef = useRef<number | null>(null)
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -35,25 +36,30 @@ export function CrescentMoonHero() {
       speed: 0.3 + Math.random() * 0.2,
     }))
 
-    const drawCloud = (x: number, y: number, size: number) => {
-      ctx.save()
-      ctx.translate(x, y)
+    // Pre-calculate cloud circle positions to reduce calculations
+    const cloudShapes = clouds.map(cloud => {
+      const size = cloud.size
+      return {
+        circles: [
+          { x: 0, y: 0, r: size * 0.4 },
+          { x: size * 0.3, y: 0, r: size * 0.5 },
+          { x: size * 0.6, y: 0, r: size * 0.4 },
+          { x: size * 0.15, y: -size * 0.2, r: size * 0.35 },
+          { x: size * 0.45, y: -size * 0.2, r: size * 0.35 },
+        ]
+      }
+    })
+
+    const drawCloud = (x: number, y: number, circles: typeof cloudShapes[0]['circles']) => {
       ctx.fillStyle = 'rgba(255, 255, 255, 0.25)'
       
-      const circles = [
-        { x: 0, y: 0, r: size * 0.4 },
-        { x: size * 0.3, y: 0, r: size * 0.5 },
-        { x: size * 0.6, y: 0, r: size * 0.4 },
-        { x: size * 0.15, y: -size * 0.2, r: size * 0.35 },
-        { x: size * 0.45, y: -size * 0.2, r: size * 0.35 },
-      ]
-
+      // Batch all circles in a single path for better performance
+      ctx.beginPath()
       circles.forEach(circle => {
-        ctx.beginPath()
-        ctx.arc(circle.x, circle.y, circle.r, 0, Math.PI * 2)
-        ctx.fill()
+        ctx.moveTo(x + circle.x + circle.r, y + circle.y)
+        ctx.arc(x + circle.x, y + circle.y, circle.r, 0, Math.PI * 2)
       })
-      ctx.restore()
+      ctx.fill()
     }
 
     let animationFrame: number
@@ -61,12 +67,12 @@ export function CrescentMoonHero() {
     const animate = () => {
       ctx.clearRect(0, 0, width, height)
 
-      clouds.forEach(cloud => {
+      clouds.forEach((cloud, index) => {
         cloud.x += cloud.speed
         if (cloud.x > width + cloud.size) {
           cloud.x = -cloud.size
         }
-        drawCloud(cloud.x, cloud.y, cloud.size)
+        drawCloud(cloud.x, cloud.y, cloudShapes[index].circles)
       })
 
       animationFrame = requestAnimationFrame(animate)
@@ -82,13 +88,20 @@ export function CrescentMoonHero() {
         height
       ))
       
-      const progress = Math.min(1, scrollPositionRef.current / height)
-      setScrollProgress(progress)
+      // Throttle state updates using requestAnimationFrame
+      if (rafIdRef.current === null) {
+        rafIdRef.current = requestAnimationFrame(() => {
+          const progress = Math.min(1, scrollPositionRef.current / height)
+          setScrollProgress(progress)
 
-      if (progress >= 0.95) {
-        setIsComplete(true)
-        document.body.style.overflow = ''
-        window.removeEventListener('wheel', handleWheel)
+          if (progress >= 0.95) {
+            setIsComplete(true)
+            document.body.style.overflow = ''
+            window.removeEventListener('wheel', handleWheel)
+          }
+          
+          rafIdRef.current = null
+        })
       }
     }
 
@@ -113,6 +126,10 @@ export function CrescentMoonHero() {
       window.removeEventListener('resize', resizeCanvas)
       window.removeEventListener('wheel', handleWheel)
       cancelAnimationFrame(animationFrame)
+      if (rafIdRef.current !== null) {
+        cancelAnimationFrame(rafIdRef.current)
+        rafIdRef.current = null
+      }
       if (mobileTimeout) {
         clearTimeout(mobileTimeout)
       }
@@ -120,9 +137,10 @@ export function CrescentMoonHero() {
     }
   }, [isComplete])
 
-  const easeProgress = 1 - Math.pow(1 - scrollProgress, 3)
-  const scale = 1 + easeProgress * 8
-  const rotationY = easeProgress * 90
+  // Memoize expensive transform calculations
+  const easeProgress = useMemo(() => 1 - Math.pow(1 - scrollProgress, 3), [scrollProgress])
+  const scale = useMemo(() => 1 + easeProgress * 8, [easeProgress])
+  const rotationY = useMemo(() => easeProgress * 90, [easeProgress])
 
   return (
     <>
@@ -141,11 +159,12 @@ export function CrescentMoonHero() {
 
         {/* Moon and Star Container - Pakistani Flag Style */}
         <div
-          className="absolute flex items-center justify-center gap-4"
+          className="flex absolute gap-4 justify-center items-center"
           style={{
-            transform: `scale(${scale}) rotateY(${rotationY}deg)`,
+            transform: `scale3d(${scale}, ${scale}, 1) rotateY(${rotationY}deg)`,
             transformStyle: 'preserve-3d',
             transition: 'transform 0.1s ease-out',
+            willChange: 'transform',
           }}
         >
           {/* Crescent Moon - Large smooth SVG */}
@@ -202,17 +221,17 @@ export function CrescentMoonHero() {
         </div>
 
         {/* Title */}
-        <div className="container mx-auto px-4 sm:px-6 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold text-white leading-tight tracking-tight">
+        <div className="container relative z-10 px-4 mx-auto sm:px-6">
+          <div className="mx-auto max-w-4xl text-center">
+            <h1 className="text-6xl font-bold tracking-tight leading-tight text-white font-display sm:text-7xl md:text-8xl lg:text-9xl">
               UMMAH HACKS
             </h1>
           </div>
         </div>
 
         {/* Scroll Down Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/80 animate-bounce">
-          <span className="font-display text-sm font-medium tracking-wide">SCROLL DOWN</span>
+        <div className="flex absolute bottom-8 left-1/2 flex-col gap-2 items-center animate-bounce -translate-x-1/2 text-white/80">
+          <span className="text-sm font-medium tracking-wide font-display">SCROLL DOWN</span>
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
