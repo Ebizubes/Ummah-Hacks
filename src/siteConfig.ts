@@ -358,7 +358,8 @@ export const siteConfig = {
       name: 'VePay',
       logo: '/sponsors/vepay.jpg',
       tier: 'tier1',
-      url: 'https://example.com/vepay',
+      url: 'https://vepay.io/',
+      description: 'Shariah Compliant Funding for eCommerce Sellers',
     },
     {
       name: 'Ummah1',
@@ -399,7 +400,7 @@ export const siteConfig = {
       name: 'Amano',
       logo: '/sponsors/amano.jpg',
       tier: 'tier3',
-      url: 'amanolabs.com',
+      url: 'https://amanolabs.com',
       description: "Amano designs pratical solutions for neurological technologies"
     },
     {
