@@ -72,13 +72,6 @@ export const siteConfig = {
       linkedin: 'https://www.linkedin.com/in/rana-zaky/',
     },
     { 
-      name: 'Nader Khalil', 
-      role: 'Speaker/Judge', 
-      company: 'NVIDIA', 
-      avatar: '/speakers/Nader.jpeg',
-      linkedin: 'https://www.linkedin.com/in/naderlikeladder/',
-    },
-    { 
       name: 'Nabeeha Ahmed', 
       role: 'Speaker/Judge', 
       company: 'Microsoft', 
