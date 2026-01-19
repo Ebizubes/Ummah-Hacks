@@ -362,7 +362,7 @@ function App() {
             </div>
 
             {/* Carousel */}
-            <div className="relative mx-auto max-w-6xl">
+            <div className="relative px-4 mx-auto max-w-6xl">
               <div className="overflow-hidden relative">
                 <AnimatePresence mode="wait">
                   <motion.div
@@ -412,7 +412,7 @@ function App() {
                 onClick={() => {
                   setCurrentSpeakerIndex((prev) => (prev === 0 ? siteConfig.speakers.length - 1 : prev - 1))
                 }}
-                className="absolute left-0 top-1/2 z-10 p-2 text-white rounded-full border backdrop-blur-sm transition-all -translate-y-1/2 sm:-left-12 bg-white/10 hover:bg-white/20 border-gold/30 sm:p-3"
+                className="absolute left-2 top-1/2 z-10 p-2 text-white rounded-full border backdrop-blur-sm transition-all -translate-y-1/2 sm:-left-12 bg-white/10 hover:bg-white/20 border-gold/30 sm:p-3"
                 aria-label="Previous speakers"
               >
                 <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
