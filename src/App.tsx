@@ -10,6 +10,7 @@ import { FadedStarsBackground } from './components/FadedStarsBackground'
 import { StarsBackground } from './components/StarsBackground'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { SponsorBox } from './components/SponsorBox'
 
 function App() {
   const [clickedIcons, setClickedIcons] = useState<Set<string>>(new Set())
@@ -64,7 +65,7 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-navy text-white">
+    <div className="min-h-screen text-white bg-navy">
       <Navbar />
 
       {/* Secret Message - Comic Book Style Text Bubble */}
@@ -112,7 +113,7 @@ function App() {
             
             {/* Message text - classic comic style */}
             <p 
-              className="text-black font-bold text-xs sm:text-sm md:text-base leading-relaxed m-0 pr-6"
+              className="pr-6 m-0 text-xs font-bold leading-relaxed text-black sm:text-sm md:text-base"
               style={{ 
                 fontFamily: '"Comic Sans MS", "Comic Sans", cursive, sans-serif',
                 color: '#000000',
@@ -125,7 +126,7 @@ function App() {
             {/* Close button - touch friendly */}
             <button
               onClick={() => setShowSecretMessage(false)}
-              className="absolute top-1 right-1 sm:top-2 sm:right-2 text-black active:text-gray-600 font-bold text-lg sm:text-xl leading-none bg-transparent border-none cursor-pointer touch-manipulation"
+              className="absolute top-1 right-1 text-lg font-bold leading-none text-black bg-transparent border-none cursor-pointer sm:top-2 sm:right-2 active:text-gray-600 sm:text-xl touch-manipulation"
               aria-label="Close message"
               style={{ 
                 fontFamily: 'Arial, sans-serif',
@@ -145,8 +146,8 @@ function App() {
       <CrescentMoonHero />
 
       {/* Decorative separator with icon between Hero and About */}
-      <div className="relative w-full h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent overflow-visible">
-        <div className="absolute -left-6 sm:-left-8 md:-left-10 lg:-left-14 bottom-0 translate-y-1/2 z-20 cursor-pointer touch-manipulation" style={{ transform: 'translateY(50%) rotate(-20deg)' }}>
+      <div className="overflow-visible relative w-full h-px bg-gradient-to-r from-transparent to-transparent via-gold/50">
+        <div className="absolute bottom-0 -left-6 z-20 translate-y-1/2 cursor-pointer sm:-left-8 md:-left-10 lg:-left-14 touch-manipulation" style={{ transform: 'translateY(50%) rotate(-20deg)' }}>
           <img 
             src="/give_me_a_pixelated_laptop_icon__make_it_gold_and_black-removebg-preview.png" 
             alt="Laptop Icon" 
@@ -168,31 +169,31 @@ function App() {
       </div>
 
       {/* About Section - Elegant serif theme with banner background */}
-      <section id="about" className="min-h-screen flex items-center py-12 sm:py-16 md:py-20 lg:py-32 relative overflow-hidden" style={{ backgroundImage: 'url(/better banner.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
+      <section id="about" className="flex overflow-hidden relative items-center py-12 min-h-screen sm:py-16 md:py-20 lg:py-32" style={{ backgroundImage: 'url(/better banner.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
         <StarsBackground />
-        <div className="absolute inset-0 bg-navy/80 backdrop-blur-sm"></div>
+        <div className="absolute inset-0 backdrop-blur-sm bg-navy/80"></div>
         <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-transparent"></div>
         
-        <div className="container mx-auto px-4 sm:px-6 relative z-10">
-          <div className="max-w-5xl mx-auto space-y-12 md:space-y-16">
+        <div className="container relative z-10 px-4 mx-auto sm:px-6">
+          <div className="mx-auto space-y-12 max-w-5xl md:space-y-16">
             <div className="text-center">
-              <h1 className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-4 tracking-tight drop-shadow-lg">
+              <h1 className="mb-4 text-5xl font-bold tracking-tight text-white drop-shadow-lg font-heading sm:text-6xl md:text-7xl lg:text-8xl">
                 About
               </h1>
-              <div className="w-24 h-1 bg-white/30 mx-auto"></div>
+              <div className="mx-auto w-24 h-1 bg-white/30"></div>
             </div>
 
             <div className="space-y-12 md:space-y-16">
-              <div className="bg-white/5 backdrop-blur-sm border border-gold/20 p-6 sm:p-8 md:p-12 shadow-2xl">
-                <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-semibold text-white mb-4 sm:mb-6">The Problem</h2>
-                <p className="font-serif text-base sm:text-lg md:text-xl leading-relaxed text-white/90 max-w-4xl">
+              <div className="p-6 border shadow-2xl backdrop-blur-sm bg-white/5 border-gold/20 sm:p-8 md:p-12">
+                <h2 className="mb-4 text-2xl font-semibold text-white font-display sm:text-3xl md:text-4xl sm:mb-6">The Problem</h2>
+                <p className="max-w-4xl font-serif text-base leading-relaxed sm:text-lg md:text-xl text-white/90">
                   Muslim students and professionals face barriers in tech: lack of representation, limited networking opportunities, and few spaces that align with their values. Traditional hackathons often miss the unique perspectives and ethical frameworks that Muslim talent brings to innovation.
                 </p>
               </div>
               
-              <div className="bg-white/5 backdrop-blur-sm border border-gold/20 p-6 sm:p-8 md:p-12 shadow-2xl">
-                <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-semibold text-white mb-4 sm:mb-6">The Solution</h2>
-                <p className="font-serif text-base sm:text-lg md:text-xl leading-relaxed text-white/90 max-w-4xl">
+              <div className="p-6 border shadow-2xl backdrop-blur-sm bg-white/5 border-gold/20 sm:p-8 md:p-12">
+                <h2 className="mb-4 text-2xl font-semibold text-white font-display sm:text-3xl md:text-4xl sm:mb-6">The Solution</h2>
+                <p className="max-w-4xl font-serif text-base leading-relaxed sm:text-lg md:text-xl text-white/90">
                   UmmahHacks bridges this gap by creating North America's premier Muslim-led hackathon. We provide a platform where faith meets innovation, where students showcase value-driven talent, where founders discover exceptional hires, and where bold ideas transform into real-world impact—all rooted in Islamic principles and open to everyone.
                 </p>
               </div>
@@ -202,8 +203,8 @@ function App() {
       </section>
 
       {/* Decorative separator with icon between About and Tracks */}
-      <div className="relative w-full h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent overflow-visible">
-        <div className="absolute -right-6 sm:-right-8 md:-right-10 lg:-right-14 bottom-0 translate-y-1/2 z-20 cursor-pointer touch-manipulation" style={{ transform: 'translateY(50%) rotate(20deg)' }}>
+      <div className="overflow-visible relative w-full h-px bg-gradient-to-r from-transparent to-transparent via-gold/50">
+        <div className="absolute bottom-0 -right-6 z-20 translate-y-1/2 cursor-pointer sm:-right-8 md:-right-10 lg:-right-14 touch-manipulation" style={{ transform: 'translateY(50%) rotate(20deg)' }}>
           <img 
             src="/now_give_me_a_pixelated_controller_that_is_black_and_gold-removebg-preview.png" 
             alt="Controller Icon" 
@@ -225,19 +226,19 @@ function App() {
       </div>
 
       {/* Tracks Section - Modern display font theme with card grid */}
-      <section id="tracks" className="min-h-screen flex items-center py-12 sm:py-16 md:py-20 lg:py-32 bg-gradient-to-b from-navy-dark via-navy to-navy-light relative overflow-hidden">
+      <section id="tracks" className="flex overflow-hidden relative items-center py-12 min-h-screen bg-gradient-to-b sm:py-16 md:py-20 lg:py-32 from-navy-dark via-navy to-navy-light">
         <FadedStarsBackground />
-        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-gold/5 to-transparent"></div>
-        <div className="container mx-auto px-4 sm:px-6 relative z-10">
-          <div className="max-w-6xl mx-auto space-y-12 md:space-y-16">
+        <div className="absolute inset-0 bg-gradient-to-tr from-transparent to-transparent via-gold/5"></div>
+        <div className="container relative z-10 px-4 mx-auto sm:px-6">
+          <div className="mx-auto space-y-12 max-w-6xl md:space-y-16">
             <div className="text-center">
-              <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-4 tracking-tight">
+              <h1 className="mb-4 text-5xl font-bold tracking-tight text-white font-display sm:text-6xl md:text-7xl lg:text-8xl">
                 Tracks
               </h1>
-              <p className="font-sans text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
+              <p className="mx-auto max-w-2xl font-sans text-lg md:text-xl text-white/80">
                 Choose your track and build solutions that create meaningful impact
               </p>
-              <div className="w-24 h-1 bg-white/30 mx-auto mt-6"></div>
+              <div className="mx-auto mt-6 w-24 h-1 bg-white/30"></div>
             </div>
 
             <div className="grid gap-4 sm:gap-6 md:gap-8 md:grid-cols-1 lg:grid-cols-2">
@@ -250,20 +251,19 @@ function App() {
                   <div 
                     key={track.id} 
                     className={`group bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-gold/30 p-5 sm:p-6 md:p-8 transition-all duration-300 ${
-                      shouldCenter ? 'lg:col-span-2 lg:max-w-2xl lg:mx-auto' : ''
-                    }`}
+                      shouldCenter ? 'lg:col-span-2 lg:max-w-2xl lg:mx-auto' : ''}`}
                   >
-                    <h3 className="font-display text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4">
+                    <h3 className="mb-3 text-xl font-bold text-white font-display sm:text-2xl md:text-3xl sm:mb-4">
                       {track.title}
                     </h3>
                     <div className="space-y-2 sm:space-y-3">
                       <div>
-                        <span className="font-display text-xs sm:text-sm font-semibold text-white uppercase tracking-wide">Purpose:</span>
-                        <p className="font-sans text-sm sm:text-base text-white/90 mt-1 leading-relaxed">{track.purpose}</p>
+                        <span className="text-xs font-semibold tracking-wide text-white uppercase font-display sm:text-sm">Purpose:</span>
+                        <p className="mt-1 font-sans text-sm leading-relaxed sm:text-base text-white/90">{track.purpose}</p>
                       </div>
                       <div>
-                        <span className="font-display text-xs sm:text-sm font-semibold text-white uppercase tracking-wide">Challenge:</span>
-                        <p className="font-sans text-sm sm:text-base text-white/80 mt-1 leading-relaxed">{track.challenge}</p>
+                        <span className="text-xs font-semibold tracking-wide text-white uppercase font-display sm:text-sm">Challenge:</span>
+                        <p className="mt-1 font-sans text-sm leading-relaxed sm:text-base text-white/80">{track.challenge}</p>
                       </div>
                     </div>
                   </div>
@@ -275,8 +275,8 @@ function App() {
       </section>
 
       {/* Decorative separator with icon between Tracks and Schedule */}
-      <div className="relative w-full h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent overflow-visible">
-        <div className="absolute -left-6 sm:-left-8 md:-left-10 lg:-left-14 bottom-0 translate-y-full z-20 cursor-pointer touch-manipulation" style={{ transform: 'translateY(100%) rotate(18deg)' }}>
+      <div className="overflow-visible relative w-full h-px bg-gradient-to-r from-transparent to-transparent via-gold/50">
+        <div className="absolute bottom-0 -left-6 z-20 translate-y-full cursor-pointer sm:-left-8 md:-left-10 lg:-left-14 touch-manipulation" style={{ transform: 'translateY(100%) rotate(18deg)' }}>
           <img 
             src="/ChatGPT_Image_Jan_9__2026__12_46_33_AM-removebg-preview.png" 
             alt="Icon" 
@@ -298,23 +298,23 @@ function App() {
       </div>
 
       {/* Schedule Section - Clean minimal theme */}
-      <section id="schedule" className="min-h-screen flex items-center py-12 sm:py-16 md:py-20 lg:py-32 bg-gradient-to-b from-navy-light via-navy to-navy-dark relative overflow-hidden">
+      <section id="schedule" className="flex overflow-hidden relative items-center py-12 min-h-screen bg-gradient-to-b sm:py-16 md:py-20 lg:py-32 from-navy-light via-navy to-navy-dark">
         <FadedStarsBackground />
         <div className="absolute inset-0 bg-gradient-to-bl from-transparent via-transparent to-transparent"></div>
-        <div className="container mx-auto px-4 sm:px-6 relative z-10">
-          <div className="max-w-5xl mx-auto space-y-12 md:space-y-16">
+        <div className="container relative z-10 px-4 mx-auto sm:px-6">
+          <div className="mx-auto space-y-12 max-w-5xl md:space-y-16">
             <div className="text-center">
-              <h1 className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-4 tracking-tight">
+              <h1 className="mb-4 text-5xl font-bold tracking-tight text-white font-heading sm:text-6xl md:text-7xl lg:text-8xl">
                 Schedule
               </h1>
-              <p className="font-sans text-lg md:text-xl text-white/80 mb-6">
+              <p className="mb-6 font-sans text-lg md:text-xl text-white/80">
                 Saturday, January 24 - Sunday, January 25 • 36 hours of innovation
               </p>
-              <div className="w-24 h-1 bg-white/30 mx-auto"></div>
+              <div className="mx-auto w-24 h-1 bg-white/30"></div>
             </div>
 
-            <div className="mt-8 sm:mt-12 md:mt-16 text-center">
-              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white">
+            <div className="mt-8 text-center sm:mt-12 md:mt-16">
+              <h2 className="text-3xl font-bold text-white font-display md:text-4xl lg:text-5xl">
                 Coming Soon
               </h2>
             </div>
@@ -323,8 +323,8 @@ function App() {
       </section>
 
       {/* Decorative separator with icon between Schedule and Speakers */}
-      <div className="relative w-full h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent overflow-visible">
-        <div className="absolute -right-6 sm:-right-8 md:-right-10 lg:-right-14 bottom-0 translate-y-1/2 z-20 cursor-pointer touch-manipulation" style={{ transform: 'translateY(50%) rotate(22deg)' }}>
+      <div className="overflow-visible relative w-full h-px bg-gradient-to-r from-transparent to-transparent via-gold/50">
+        <div className="absolute bottom-0 -right-6 z-20 translate-y-1/2 cursor-pointer sm:-right-8 md:-right-10 lg:-right-14 touch-manipulation" style={{ transform: 'translateY(50%) rotate(22deg)' }}>
           <img 
             src="/4840046.png" 
             alt="Icon" 
@@ -346,24 +346,24 @@ function App() {
       </div>
 
       {/* Speakers/Judges Section - Carousel */}
-      <section id="speakers" className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-navy-dark via-navy-light to-navy relative overflow-hidden">
+      <section id="speakers" className="overflow-hidden relative py-12 bg-gradient-to-b sm:py-16 md:py-20 from-navy-dark via-navy-light to-navy">
         <FadedStarsBackground />
         <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-transparent to-transparent"></div>
-        <div className="container mx-auto px-4 sm:px-6 relative z-10">
-          <div className="max-w-4xl mx-auto space-y-8 md:space-y-12">
+        <div className="container relative z-10 px-4 mx-auto sm:px-6">
+          <div className="mx-auto space-y-8 max-w-4xl md:space-y-12">
             <div className="text-center">
-              <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 tracking-tight">
+              <h1 className="mb-4 text-4xl font-bold tracking-tight text-white font-heading sm:text-5xl md:text-6xl">
                 Speakers & Judges
               </h1>
-              <p className="font-sans text-base md:text-lg text-white/80 mb-6">
+              <p className="mb-6 font-sans text-base md:text-lg text-white/80">
                 Learn from industry leaders and get feedback from expert judges
               </p>
-              <div className="w-24 h-1 bg-white/30 mx-auto"></div>
+              <div className="mx-auto w-24 h-1 bg-white/30"></div>
             </div>
 
             {/* Carousel */}
-            <div className="relative max-w-6xl mx-auto">
-              <div className="relative overflow-hidden">
+            <div className="relative mx-auto max-w-6xl">
+              <div className="overflow-hidden relative">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currentSpeakerIndex}
@@ -371,23 +371,23 @@ function App() {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -50 }}
                     transition={{ duration: 0.3 }}
-                    className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6"
+                    className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 sm:gap-6"
                   >
                     {Array.from({ length: speakersPerView }).map((_, index) => {
                       const speakerIndex = (currentSpeakerIndex + index) % siteConfig.speakers.length
                       const speaker = siteConfig.speakers[speakerIndex]
                       return (
                         <div
-                          key={`${currentSpeakerIndex}-${index}`}
-                          className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-gold/30 p-4 sm:p-6 text-center transition-all duration-300"
+                          key={`${currentSpeakerIndex}-${index}`}                          className="p-4 text-center bg-gradient-to-br border backdrop-blur-sm transition-all duration-300 from-white/10 to-white/5 border-gold/30 sm:p-6"
+
                         >
                           <div className="flex justify-center mb-3 sm:mb-4">
-                            <div className="relative overflow-hidden rounded-full">
-                              <div className="absolute inset-0 bg-white/10 rounded-full blur-xl transition-all"></div>
+                            <div className="overflow-hidden relative rounded-full">
+                              <div className="absolute inset-0 rounded-full blur-xl transition-all bg-white/10"></div>
                               <img 
                                 src={speaker.avatar} 
                                 alt={speaker.name}
-                                className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full object-cover object-center border-4 border-gold/40 transition-all shadow-xl"
+                                className="object-cover object-center relative w-24 h-24 rounded-full border-4 shadow-xl transition-all sm:w-28 sm:h-28 md:w-32 md:h-32 border-gold/40"
                                 loading="lazy"
                                 onError={() => {
                                   console.error('Failed to load image:', speaker.avatar);
@@ -396,7 +396,7 @@ function App() {
                               />
                             </div>
                           </div>
-                          <h3 className="font-display text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 sm:mb-2">
+                          <h3 className="mb-1 text-lg font-bold text-white font-display sm:text-xl md:text-2xl sm:mb-2">
                             {speaker.name}
                           </h3>
                           <p className="font-sans text-sm sm:text-base text-white/90">{speaker.role}</p>
@@ -412,7 +412,7 @@ function App() {
                 onClick={() => {
                   setCurrentSpeakerIndex((prev) => (prev === 0 ? siteConfig.speakers.length - 1 : prev - 1))
                 }}
-                className="absolute left-0 sm:-left-12 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-gold/30 rounded-full p-2 sm:p-3 transition-all text-white z-10"
+                className="absolute left-0 top-1/2 z-10 p-2 text-white rounded-full border backdrop-blur-sm transition-all -translate-y-1/2 sm:-left-12 bg-white/10 hover:bg-white/20 border-gold/30 sm:p-3"
                 aria-label="Previous speakers"
               >
                 <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -421,14 +421,14 @@ function App() {
                 onClick={() => {
                   setCurrentSpeakerIndex((prev) => (prev === siteConfig.speakers.length - 1 ? 0 : prev + 1))
                 }}
-                className="absolute right-0 sm:-right-12 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-gold/30 rounded-full p-2 sm:p-3 transition-all text-white z-10"
+                className="absolute right-0 top-1/2 z-10 p-2 text-white rounded-full border backdrop-blur-sm transition-all -translate-y-1/2 sm:-right-12 bg-white/10 hover:bg-white/20 border-gold/30 sm:p-3"
                 aria-label="Next speakers"
               >
                 <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
 
               {/* Dots Indicator */}
-              <div className="flex justify-center gap-2 mt-6">
+              <div className="flex gap-2 justify-center mt-6">
                 {siteConfig.speakers.map((_, index) => {
                   // Check if this speaker is currently visible
                   const isVisible = Array.from({ length: speakersPerView }).some((_, i) => {
@@ -440,7 +440,7 @@ function App() {
                       key={index}
                       onClick={() => setCurrentSpeakerIndex(index)}
                       className={`h-2 rounded-full transition-all ${
-                        isVisible ? 'bg-gold w-3' : 'bg-white/30 w-2'
+                        isVisible ? 'w-3 bg-gold' : 'w-2 bg-white/30'
                       }`}
                       aria-label={`Go to speaker ${index + 1}`}
                     />
@@ -453,25 +453,67 @@ function App() {
       </section>
 
       {/* Decorative separator */}
-      <div className="w-full h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent"></div>
-
-      {/* FAQ Section - Clean readable theme */}
-      <section id="faq" className="min-h-screen flex items-center py-12 sm:py-16 md:py-20 lg:py-32 bg-gradient-to-b from-navy-light via-navy to-navy-dark relative overflow-hidden">
+      <div className="w-full h-px from-transparent to-transparent via-gold/50"></div>
+      <section id="sponsors" className="overflow-hidden relative py-12 sm:py-16 md:py-20 from-navy-dark via-navy-light to-navy">
         <FadedStarsBackground />
-        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-transparent"></div>
-        <div className="container mx-auto px-4 sm:px-6 relative z-10">
-          <div className="max-w-4xl mx-auto space-y-12 md:space-y-16">
+        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-transparent to-transparent"></div>
+        <div className="container relative z-10 px-4 mx-auto sm:px-6">
+          <div className="mx-auto space-y-8 max-w-6xl md:space-y-12">
             <div className="text-center">
-              <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-4 tracking-tight">
-                FAQ
+              <h1 className="mb-4 text-4xl font-bold tracking-tight text-white font-heading sm:text-5xl md:text-6xl">
+                Our Sponsors
               </h1>
-              <p className="font-sans text-lg md:text-xl text-white/80 mb-6">
-                Everything you need to know about UmmahHacks
+              <p className="mx-auto mt-4 max-w-2xl font-sans text-base md:text-lg text-white/80">
+                These incredible companies help bring UmmahHacks to life, uniting to support hundreds of students during this weekend of innovation.
               </p>
-              <div className="w-24 h-1 bg-white/30 mx-auto"></div>
+              <div className="mx-auto mt-6 w-24 h-1 bg-white/30"></div>
             </div>
 
-            <div className="bg-white/5 backdrop-blur-sm border border-gold/20 p-8 md:p-12 shadow-xl">
+            {/* Sponsors Grid */}
+            <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+              {(() => {
+                // Group sponsors by tier: tier1, tier2, tier3
+                const tier1Sponsors = siteConfig.sponsors.filter(s => s.tier === 'tier1')
+                const tier2Sponsors = siteConfig.sponsors.filter(s => s.tier === 'tier2')
+                const tier3Sponsors = siteConfig.sponsors.filter(s => s.tier === 'tier3')
+                const allSponsors = [...tier1Sponsors, ...tier2Sponsors, ...tier3Sponsors]
+                
+                return allSponsors.map((sponsor, index) => {
+                  return (
+                    <div
+                      key={`${sponsor.name}-${index}`}
+                    >
+                      <SponsorBox
+                        name={sponsor.name}
+                        logo={sponsor.logo}
+                        tier={sponsor.tier as 'tier1' | 'tier2' | 'tier3'}
+                        url={sponsor.url}
+                      />
+                    </div>
+                  )
+                })
+              })()}
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* FAQ Section - Clean readable theme */}
+      <section id="faq" className="flex overflow-hidden relative items-center py-12 min-h-screen bg-gradient-to-b sm:py-16 md:py-20 lg:py-32 from-navy-light via-navy to-navy-dark">
+        <FadedStarsBackground />
+        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-transparent"></div>
+        <div className="container relative z-10 px-4 mx-auto sm:px-6">
+          <div className="mx-auto space-y-12 max-w-4xl md:space-y-16">
+            <div className="text-center">
+              <h1 className="mb-4 text-5xl font-bold tracking-tight text-white font-display sm:text-6xl md:text-7xl lg:text-8xl">
+                FAQ
+              </h1>
+              <p className="mb-6 font-sans text-lg md:text-xl text-white/80">
+                Everything you need to know about UmmahHacks
+              </p>
+              <div className="mx-auto w-24 h-1 bg-white/30"></div>
+            </div>
+
+            <div className="p-8 border shadow-xl backdrop-blur-sm bg-white/5 border-gold/20 md:p-12">
               <FAQAccordion items={siteConfig.faq} />
             </div>
           </div>
@@ -479,24 +521,24 @@ function App() {
       </section>
 
       {/* Decorative separator */}
-      <div className="w-full h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent"></div>
+      <div className="w-full h-px bg-gradient-to-r from-transparent to-transparent via-gold/50"></div>
 
       {/* CTA Section - Bold energetic theme */}
-      <section id="apply" className="min-h-screen flex items-center py-12 sm:py-16 md:py-20 lg:py-32 bg-gradient-to-b from-navy-dark via-navy to-navy-light relative overflow-hidden">
+      <section id="apply" className="flex overflow-hidden relative items-center py-12 min-h-screen bg-gradient-to-b sm:py-16 md:py-20 lg:py-32 from-navy-dark via-navy to-navy-light">
         <FadedStarsBackground />
         <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-transparent to-transparent"></div>
-        <div className="container mx-auto px-4 sm:px-6 relative z-10">
-          <div className="max-w-4xl mx-auto text-center space-y-10 md:space-y-12">
+        <div className="container relative z-10 px-4 mx-auto sm:px-6">
+          <div className="mx-auto space-y-10 max-w-4xl text-center md:space-y-12">
             <div>
-              <h2 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight">
+              <h2 className="mb-6 text-4xl font-bold tracking-tight text-white font-display sm:text-5xl md:text-6xl lg:text-7xl">
                 Ready to Build?
               </h2>
-              <p className="font-serif text-xl md:text-2xl text-white/90 max-w-2xl mx-auto leading-relaxed">
+              <p className="mx-auto max-w-2xl font-serif text-xl leading-relaxed md:text-2xl text-white/90">
                 Join us for an unforgettable weekend of innovation, collaboration, and impact. Applications are open now!
               </p>
             </div>
             
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="flex flex-col gap-4 justify-center items-center sm:flex-row">
               <Button 
                 size="lg" 
                 onClick={() => window.open(siteConfig.lumaLink, '_blank')}
@@ -514,11 +556,11 @@ function App() {
               </Button>
             </div>
             
-            <div className="pt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
-              <Badge variant="outline" className="border-gold/50 text-white bg-gold/10 font-display px-4 py-2 text-sm">
+            <div className="flex flex-col gap-3 justify-center items-center pt-8 sm:flex-row">
+              <Badge variant="outline" className="px-4 py-2 text-sm text-white border-gold/50 bg-gold/10 font-display">
                 Prayer Space Available
               </Badge>
-              <Badge variant="outline" className="border-gold/50 text-white bg-gold/10 font-display px-4 py-2 text-sm">
+              <Badge variant="outline" className="px-4 py-2 text-sm text-white border-gold/50 bg-gold/10 font-display">
                 Dietary Accommodations (Halal/Veg)
               </Badge>
             </div>
