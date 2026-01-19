@@ -1,5 +1,6 @@
 import { FadedStarsBackground } from './FadedStarsBackground'
 import { siteConfig } from '../siteConfig'
+import { Spotlight } from './spotlight'
 
 export function TracksSection() {
   return (
@@ -27,13 +28,17 @@ export function TracksSection() {
               return (
                 <div 
                   key={track.id} 
-                  className={`group bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-gold/30 p-5 sm:p-6 md:p-8 transition-all duration-300 ${
+                  className={`group relative overflow-hidden bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-gold/30 p-5 sm:p-6 md:p-8 transition-all duration-300 ${
                     shouldCenter ? 'lg:col-span-2 lg:max-w-2xl lg:mx-auto' : ''}`}
                 >
-                  <h3 className="mb-3 text-xl font-bold text-white font-display sm:text-2xl md:text-3xl sm:mb-4">
+                  <Spotlight
+                    className="via-blue-900 to-black blur-xl from-blue-950"
+                    size={150}
+                  />
+                  <h3 className="relative z-10 mb-3 text-xl font-bold text-white font-display sm:text-2xl md:text-3xl sm:mb-4">
                     {track.title}
                   </h3>
-                  <div className="space-y-2 sm:space-y-3">
+                  <div className="relative z-10 space-y-2 sm:space-y-3">
                     <div>
                       <span className="text-xs font-semibold tracking-wide text-white uppercase font-display sm:text-sm">Purpose:</span>
                       <p className="mt-1 font-sans text-sm leading-relaxed sm:text-base text-white/90">{track.purpose}</p>

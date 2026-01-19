@@ -16,6 +16,7 @@ export interface CardFlipProps {
   customFrontContent?: React.ReactNode;
   borderClassName?: string;
   backgroundClassName?: string;
+  subtitleClassName?: string;
 }
 
 export default function CardFlip({
@@ -30,12 +31,13 @@ export default function CardFlip({
   customFrontContent,
   borderClassName,
   backgroundClassName,
+  subtitleClassName,
 }: CardFlipProps) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const cardContent = (
     <div
-      className={cn("relative w-full group h-[320px] max-w-[280px] [perspective:2000px]", className)}
+      className={cn("relative mx-auto w-full group h-[320px] max-w-[280px] [perspective:2000px]", className)}
       onMouseEnter={() => setIsFlipped(true)}
       onMouseLeave={() => setIsFlipped(false)}
     >
@@ -59,7 +61,8 @@ export default function CardFlip({
             "shadow-xs dark:shadow-lg",
             "transition-all duration-500",
             "group-hover:shadow-lg dark:group-hover:shadow-xl",
-            isFlipped ? "opacity-0" : "opacity-100"
+            isFlipped ? "opacity-0" : "opacity-100",
+            
           )}
           style={{ willChange: 'transform, opacity' }}
         >
@@ -119,7 +122,7 @@ export default function CardFlip({
                     </h3>
                   )}
                   {subtitle && (
-                    <p className="line-clamp-2 text-sm text-white/80 tracking-tight transition-all delay-[50ms] duration-500 ease-out-expo group-hover:translate-y-[-4px]">
+                    <p className={cn("line-clamp-2 text-sm tracking-tight transition-all delay-[50ms] duration-500 ease-out-expo group-hover:translate-y-[-4px]", subtitleClassName || "text-white/80")}>
                       {subtitle}
                     </p>
                   )}
@@ -143,7 +146,7 @@ export default function CardFlip({
           className={cn(
             "absolute inset-0 w-full h-full",
             "[backface-visibility:hidden] [transform:rotateY(180deg)]",
-            "p-6 rounded-2xl",
+            "p-6",
             borderClassName || "border border-zinc-200 dark:border-zinc-800",
             "shadow-xs dark:shadow-lg",
             "flex flex-col",
@@ -154,7 +157,7 @@ export default function CardFlip({
           style={{ willChange: 'transform, opacity' }}
         >
           <div className={cn(
-            "absolute inset-0 rounded-2xl",
+            "absolute inset-0",
             backgroundClassName || "bg-gradient-to-b to-white from-zinc-100 dark:from-zinc-900 dark:to-black"
           )} />
           <div className="flex relative z-10 flex-col h-full">
@@ -197,11 +200,12 @@ export default function CardFlip({
                 className={cn(
                   "group/start relative block",
                   "flex items-center justify-between",
-                  "-m-3 rounded-xl p-3",
+                  "-m-3 p-3",
                   "transition-all duration-300",
                   "bg-white/10 backdrop-blur-[2px]",
                   "hover:bg-white/20",
-                  "hover:scale-[1.02] cursor-pointer"
+                  "hover:scale-[1.02] cursor-pointer",
+                  "mx-auto"
                 )}
                 style={{ willChange: 'transform' }}
               >

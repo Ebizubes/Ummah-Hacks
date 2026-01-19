@@ -26,19 +26,23 @@ export function SponsorsSection() {
           </div>
 
           {/* Sponsors Grid */}
-          <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3 sm:gap-6 md:gap-8">
             {allSponsors.map((sponsor, index) => {
               return (
                 <div
                   key={`${sponsor.name}-${index}`}
+                  className="md:block"
                   style={{ willChange: 'transform' }}
                 >
-                  <SponsorBox
-                    name={sponsor.name}
-                    logo={sponsor.logo}
-                    tier={sponsor.tier as 'tier1' | 'tier2' | 'tier3'}
-                    url={sponsor.url}
-                  />
+                  <div className="mx-auto md:mx-0">
+                    <SponsorBox
+                      name={sponsor.name}
+                      logo={sponsor.logo}
+                      tier={sponsor.tier as 'tier1' | 'tier2' | 'tier3'}
+                      url={sponsor.url}
+                      description={sponsor.description}
+                    />
+                  </div>
                 </div>
               )
             })}

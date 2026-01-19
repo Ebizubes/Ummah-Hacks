@@ -30,9 +30,7 @@ export function SponsorBox({ name, logo, tier, url, className = '', description 
   // Tier-specific height adjustments
   const heightClass = isTier1 
     ? 'h-[400px] max-w-[320px]' 
-    : isTier2 
-    ? 'h-[360px] max-w-[300px]' 
-    : 'h-[320px] max-w-[280px]'
+    : 'h-[360px] max-w-[300px]' // Tier 2 and Tier 3: Same size
   
   // Additional tier-specific styling
   const tierStyles = isTier1 
@@ -40,16 +38,23 @@ export function SponsorBox({ name, logo, tier, url, className = '', description 
     : isTier2 
     ? 'shadow-xl' // Tier 2: Medium shadow
     : 'shadow-lg' // Tier 3: Lighter shadow
+  
+  // Subtitle color based on tier
+  const subtitleColorClass = isTier1 
+    ? 'text-gold' // Gold for tier 1
+    : isTier2 
+    ? 'text-slate-300' // Silver for tier 2
+    : 'text-amber-500' // Bronze for tier 3
 
   // Default description based on tier if not provided
   const sponsorDescription = description || 
-    (isTier1 ? 'Our premier sponsor supporting this event.' :
+    (isTier1 ? 'Our gold sponsor supporting this event.' :
      isTier2 ? 'A valued sponsor contributing to this event.' :
      'A sponsor supporting this event.')
 
   // Features can show tier information
   const features = isTier1 
-    ? ['Premier Sponsor', 'Gold Tier', 'Major Supporter']
+    ? ['Gold Sponsor', 'Gold Tier', 'Major Supporter']
     : isTier2
     ? ['Silver Tier', 'Valued Partner']
     : ['Bronze Tier', 'Community Supporter']
@@ -57,7 +62,7 @@ export function SponsorBox({ name, logo, tier, url, className = '', description 
   return (
     <CardFlip
       title={name}
-      subtitle={isTier1 ? 'Premier Sponsor' : isTier2 ? 'Silver Sponsor' : 'Bronze Sponsor'}
+      subtitle={isTier1 ? 'Gold Sponsor' : isTier2 ? 'Silver Sponsor' : 'Bronze Sponsor'}
       description={sponsorDescription}
       features={features}
       logo={logo}
@@ -66,6 +71,7 @@ export function SponsorBox({ name, logo, tier, url, className = '', description 
       className={`${tierStyles} ${heightClass} ${className}`}
       borderClassName={borderClass}
       backgroundClassName={backgroundClass}
+      subtitleClassName={subtitleColorClass}
     />
   )
 }
