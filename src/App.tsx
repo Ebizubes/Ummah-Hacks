@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Navbar } from './components/Navbar'
 import { CrescentMoonHero } from './components/CrescentMoonHero'
 import { FAQAccordion } from './components/FAQAccordion'
@@ -8,10 +8,22 @@ import { Badge } from './components/ui/badge'
 import { siteConfig } from './siteConfig'
 import { FadedStarsBackground } from './components/FadedStarsBackground'
 import { StarsBackground } from './components/StarsBackground'
+import { motion, AnimatePresence } from 'framer-motion'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 function App() {
   const [clickedIcons, setClickedIcons] = useState<Set<string>>(new Set())
   const [showSecretMessage, setShowSecretMessage] = useState(false)
+  const [currentSpeakerIndex, setCurrentSpeakerIndex] = useState(0)
+
+  // Auto-rotate carousel
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSpeakerIndex((prev) => (prev === siteConfig.speakers.length - 1 ? 0 : prev + 1))
+    }, 5000) // Change speaker every 5 seconds
+
+    return () => clearInterval(interval)
+  }, [])
 
   const handleIconClick = (iconId: string) => {
     const newClicked = new Set(clickedIcons)
@@ -315,65 +327,86 @@ function App() {
         </div>
       </div>
 
-      {/* Speakers/Judges Section - Elegant card theme */}
-      <section id="speakers" className="min-h-screen flex items-center py-12 sm:py-16 md:py-20 lg:py-32 bg-gradient-to-b from-navy-dark via-navy-light to-navy relative overflow-hidden">
+      {/* Speakers/Judges Section - Carousel */}
+      <section id="speakers" className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-navy-dark via-navy-light to-navy relative overflow-hidden">
         <FadedStarsBackground />
         <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-transparent to-transparent"></div>
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
-          <div className="max-w-6xl mx-auto space-y-12 md:space-y-16">
+          <div className="max-w-4xl mx-auto space-y-8 md:space-y-12">
             <div className="text-center">
-              <h1 className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-4 tracking-tight">
+              <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 tracking-tight">
                 Speakers & Judges
               </h1>
-              <p className="font-sans text-lg md:text-xl text-white/80 mb-6">
+              <p className="font-sans text-base md:text-lg text-white/80 mb-6">
                 Learn from industry leaders and get feedback from expert judges
               </p>
               <div className="w-24 h-1 bg-white/30 mx-auto"></div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 md:gap-10 max-w-4xl mx-auto">
-              {siteConfig.speakers.map((speaker, index) => (
-                <div 
-                  key={index} 
-                  className="group bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-gold/30 p-5 sm:p-6 md:p-8 text-center transition-all duration-300"
-                >
-                  <div className="flex justify-center mb-4 sm:mb-6">
-                    <div className="relative">
-                      <div className="absolute inset-0 bg-white/10 rounded-full blur-xl transition-all"></div>
-                      <img 
-                        src={speaker.avatar} 
-                        alt={speaker.name}
-                        className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-full object-cover border-4 border-gold/40 transition-all shadow-xl"
-                        loading="lazy"
-                        onError={() => {
-                          console.error('Failed to load image:', speaker.avatar);
-                          console.error('Speaker:', speaker.name);
-                        }}
-                      />
+            {/* Carousel */}
+            <div className="relative max-w-md mx-auto">
+              <div className="relative overflow-hidden rounded-lg">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentSpeakerIndex}
+                    initial={{ opacity: 0, x: 100 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -100 }}
+                    transition={{ duration: 0.3 }}
+                    className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-gold/30 p-6 sm:p-8 text-center"
+                  >
+                    <div className="flex justify-center mb-4">
+                      <div className="relative overflow-hidden rounded-full">
+                        <div className="absolute inset-0 bg-white/10 rounded-full blur-xl transition-all"></div>
+                        <img 
+                          src={siteConfig.speakers[currentSpeakerIndex].avatar} 
+                          alt={siteConfig.speakers[currentSpeakerIndex].name}
+                          className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full object-cover object-center border-4 border-gold/40 transition-all shadow-xl"
+                          loading="lazy"
+                          onError={() => {
+                            console.error('Failed to load image:', siteConfig.speakers[currentSpeakerIndex].avatar);
+                            console.error('Speaker:', siteConfig.speakers[currentSpeakerIndex].name);
+                          }}
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <h3 className="font-display text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2">
-                    {speaker.name}
-                  </h3>
-                  <p className="font-sans text-sm sm:text-base text-white/90 mb-1">{speaker.role}</p>
-                  {speaker.company && (
-                    <p className="font-serif text-xs sm:text-sm text-white/60 mb-3 sm:mb-4">{speaker.company}</p>
-                  )}
-                  {speaker.linkedin && (
-                    <a
-                      href={speaker.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-white transition-colors font-display text-xs sm:text-sm font-medium touch-manipulation min-h-[44px]"
-                    >
-                      <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                      </svg>
-                      LinkedIn
-                    </a>
-                  )}
-                </div>
-              ))}
+                    <h3 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2">
+                      {siteConfig.speakers[currentSpeakerIndex].name}
+                    </h3>
+                    <p className="font-sans text-base sm:text-lg text-white/90">{siteConfig.speakers[currentSpeakerIndex].role}</p>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+
+              {/* Navigation Arrows */}
+              <button
+                onClick={() => setCurrentSpeakerIndex((prev) => (prev === 0 ? siteConfig.speakers.length - 1 : prev - 1))}
+                className="absolute left-0 sm:-left-12 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-gold/30 rounded-full p-2 sm:p-3 transition-all text-white"
+                aria-label="Previous speaker"
+              >
+                <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+              </button>
+              <button
+                onClick={() => setCurrentSpeakerIndex((prev) => (prev === siteConfig.speakers.length - 1 ? 0 : prev + 1))}
+                className="absolute right-0 sm:-right-12 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-gold/30 rounded-full p-2 sm:p-3 transition-all text-white"
+                aria-label="Next speaker"
+              >
+                <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+              </button>
+
+              {/* Dots Indicator */}
+              <div className="flex justify-center gap-2 mt-6">
+                {siteConfig.speakers.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentSpeakerIndex(index)}
+                    className={`w-2 h-2 rounded-full transition-all ${
+                      index === currentSpeakerIndex ? 'bg-gold w-8' : 'bg-white/30'
+                    }`}
+                    aria-label={`Go to speaker ${index + 1}`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
