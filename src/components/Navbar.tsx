@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 import { Button } from './ui/button'
 import { siteConfig } from '@/siteConfig'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'motion/react'
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
