@@ -251,11 +251,5 @@ export default function CardFlip({
     </div>
   );
 
-  return url ? (
-    <a href={url} target="_blank" rel="noopener noreferrer" className="block">
-      {cardContent}
-    </a>
-  ) : (
-    cardContent
-  );
+  return cardContent;
 }
