@@ -41,7 +41,8 @@ export function SponsorsSection() {
                       tier={sponsor.tier as 'tier1' | 'tier2' | 'tier3'}
                       url={sponsor.url}
                       description={sponsor.description}
-                    />
+                      founders={sponsor.founders}
+                      />
                   </div>
                 </div>
               )

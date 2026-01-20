@@ -7,9 +7,10 @@ interface SponsorBoxProps {
   url?: string
   className?: string
   description?: string
+  founders?: string
 }
 
-export function SponsorBox({ name, logo, tier, url, className = '', description }: SponsorBoxProps) {
+export function SponsorBox({ name, logo, tier, url, className = '', description, founders }: SponsorBoxProps) {
   const isTier1 = tier === 'tier1'
   const isTier2 = tier === 'tier2'
   
@@ -27,10 +28,10 @@ export function SponsorBox({ name, logo, tier, url, className = '', description 
     ? 'bg-gradient-to-br from-white/15 to-white/10 backdrop-blur-sm' // Tier 2: Medium background
     : 'bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm' // Tier 3: Lighter background
   
-  // Tier-specific height adjustments
+  // Tier-specific height adjustments - same size on mobile, different on desktop
   const heightClass = isTier1 
-    ? 'h-[400px] max-w-[320px]' 
-    : 'h-[360px] max-w-[300px]' // Tier 2 and Tier 3: Same size
+    ? 'h-[320px] w-[280px] sm:h-[400px] sm:w-[320px]' 
+    : 'h-[320px] w-[280px] sm:h-[360px] sm:w-[300px]' // Tier 2 and Tier 3: Same size on mobile
   
   // Additional tier-specific styling
   const tierStyles = isTier1 
@@ -64,6 +65,7 @@ export function SponsorBox({ name, logo, tier, url, className = '', description 
       title={name}
       subtitle={isTier1 ? 'Gold Sponsor' : isTier2 ? 'Silver Sponsor' : 'Bronze Sponsor'}
       description={sponsorDescription}
+      founders={founders}
       features={features}
       logo={logo}
       logoAlt={name}

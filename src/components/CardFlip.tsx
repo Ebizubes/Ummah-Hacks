@@ -8,6 +8,7 @@ export interface CardFlipProps {
   title?: string;
   subtitle?: string;
   description?: string;
+  founders?: string;
   features?: string[];
   logo?: string;
   logoAlt?: string;
@@ -23,6 +24,7 @@ export default function CardFlip({
   title = "Design Systems",
   subtitle = "Explore the fundamentals",
   description = "Dive deep into the world of modern UI/UX design.",
+  founders,
   features = ["UI/UX", "Modern Design", "Tailwind CSS", "Kokonut UI"],
   logo,
   logoAlt,
@@ -37,7 +39,7 @@ export default function CardFlip({
 
   const cardContent = (
     <div
-      className={cn("relative mx-auto w-full group h-[320px] max-w-[280px] [perspective:2000px]", className)}
+      className={cn("relative mx-auto group h-[320px] w-[280px] sm:h-[320px] sm:w-[280px] [perspective:2000px]", className)}
       onMouseEnter={() => setIsFlipped(true)}
       onMouseLeave={() => setIsFlipped(false)}
     >
@@ -117,12 +119,12 @@ export default function CardFlip({
               <div className="flex gap-3 justify-between items-center">
                 <div className="space-y-1.5">
                   {title && (
-                    <h3 className="font-semibold text-lg text-white leading-snug tracking-tighter transition-all duration-500 ease-out-expo group-hover:translate-y-[-4px]">
+                    <h3 className="font-semibold text-lg text-white leading-snug tracking-tighter transition-all duration-500 ease-out-expo group-hover:translate-y-[-4px] break-words">
                       {title}
                     </h3>
                   )}
                   {subtitle && (
-                    <p className={cn("line-clamp-2 text-sm tracking-tight transition-all delay-[50ms] duration-500 ease-out-expo group-hover:translate-y-[-4px]", subtitleClassName || "text-white/80")}>
+                    <p className={cn("text-sm tracking-tight transition-all delay-[50ms] duration-500 ease-out-expo group-hover:translate-y-[-4px] break-words", subtitleClassName || "text-white/80")}>
                       {subtitle}
                     </p>
                   )}
@@ -163,12 +165,17 @@ export default function CardFlip({
           <div className="flex relative z-10 flex-col h-full">
             <div className="flex-1 space-y-6">
               <div className="space-y-2">
-                <h3 className="font-semibold text-lg text-white leading-snug tracking-tight transition-all duration-500 ease-out-expo group-hover:translate-y-[-2px]">
+                <h3 className="font-semibold text-lg text-white leading-snug tracking-tight transition-all duration-500 ease-out-expo group-hover:translate-y-[-2px] break-words">
                   {title}
                 </h3>
-                <p className="line-clamp-2 text-sm text-white/80 tracking-tight transition-all duration-500 ease-out-expo group-hover:translate-y-[-2px]">
+                <p className="text-sm text-white/80 tracking-tight transition-all duration-500 ease-out-expo group-hover:translate-y-[-2px] break-words">
                   {description}
                 </p>
+                {founders && (
+                  <p className="text-sm text-white/80 tracking-tight transition-all duration-500 ease-out-expo group-hover:translate-y-[-2px] break-words italic mt-2">
+                    Founders: {founders}
+                  </p>
+                )}
               </div>
 
               <div className="space-y-2">

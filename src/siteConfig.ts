@@ -62,6 +62,7 @@ export const siteConfig = {
       role: 'Speaker/Judge', 
       company: '', 
       avatar: '/speakers/YASINLKDN.jpeg',
+      occupation:"CEO @ Headstarter",
       linkedin: 'https://www.linkedin.com/in/yasinehsan/',
     },
     { 
@@ -69,42 +70,50 @@ export const siteConfig = {
       role: 'Speaker/Judge', 
       company: '', 
       avatar: '/speakers/RANALKDN.jpeg',
+      occupation:"PM & Growth Intern",
       linkedin: 'https://www.linkedin.com/in/rana-zaky/',
     },
     { 
       name: 'Nabeeha Ahmed', 
       role: 'Speaker/Judge', 
-      company: 'Microsoft', 
-      avatar: '/speakers/Nabeeha.jpeg',
+      avatar: '/speakers/Nabeeha.jpeg', 
+      occupation:"Marketing @ IBM",
       linkedin: 'https://www.linkedin.com/in/nabeeha-ahmed/',
     },
     { 
       name: 'Shaden Awad', 
       role: 'Speaker/Judge', 
-      company: '', 
+      occupation:"Founder @ QUWA Labs",
       avatar: '/speakers/Shaden.jpeg',
       linkedin: 'https://www.linkedin.com/in/shaden-awad-a45b421b6/',
     },
     { 
       name: 'Tabassum Pasha', 
       role: 'Speaker/Judge', 
-      company: '', 
+      occupation:"Co-founder @ Waive",
       avatar: '/speakers/Tabassum.jpeg',
       linkedin: 'https://www.linkedin.com/in/tabassum-pasha/',
     },
     { 
       name: 'Ali Khani', 
       role: 'Speaker/Judge', 
-      company: '', 
+      occupation:"Growth Insights & AI @ Keysight",
       avatar: '/speakers/Ali.jpeg',
       linkedin: 'https://www.linkedin.com/in/khvni/',
     },
     { 
       name: 'Safi Qadir', 
       role: 'Speaker/Judge', 
-      company: '', 
+      occupation:"Founder @ Ummahfyi, Creative Director @ Claybird",
       avatar: '/speakers/Safi.jpeg',
       linkedin: 'https://www.linkedin.com/in/safizaq/',
+    },
+    { 
+      name: 'Sanat Karkat',
+      role: 'Speaker',
+      avatar: '/speakers/Sanat.jpg',
+      occupation:"",
+      linkedin: '',
     },
   ],
   schedule: {
@@ -353,6 +362,7 @@ export const siteConfig = {
       tier: 'tier1',
       url: 'https://vepay.io/',
       description: 'Shariah Compliant Funding for eCommerce Sellers',
+      founders: "Mafaz Jaufer"
     },
     {
       name: 'Ummah1',
@@ -360,6 +370,7 @@ export const siteConfig = {
       tier: 'tier1',
       url: 'https://ummah1.com',
       description: 'Ummah1 is a platform for empowering startups, fueling growth from seed to success. ',
+      founders: "Yavar Mirza, Zaeem Shaukat"
     },
     {
       name: 'Automax AI',
@@ -367,6 +378,7 @@ export const siteConfig = {
       tier: 'tier1',
       url: 'https://automax.ai/',
       description: 'Automax AI is building AI for better transparency and accuracy in property valuations ',
+      founders: "Humza Ahmed"
     },
     {
       name: 'Insforge',
@@ -374,12 +386,14 @@ export const siteConfig = {
       tier: 'tier2',
       url: 'https://insforge.dev/',
       description: 'Insforge is building the first backend for AI agents',
+      founders:"Tony (Yaowen) Chang"
     },
     {
       name: 'Breakthrough Ventures',
       logo: '/sponsors/breakthrough_ventures.jpg',
       tier: 'tier3',
       url: 'breakvc.com',
+      founders:"Raihan Ahmed",
       description: 'Breakthrough Ventures is a venture capital firm that invests in early-stage student-led startups',
     },
     {
@@ -387,6 +401,7 @@ export const siteConfig = {
       logo: '/sponsors/asl_aspire_logo.jpg',
       tier: 'tier3',
       url: 'https://aslaspire.com/',
+      founders:"Ayesha Kazi",
       description:" ASL Aspire is an online educational platform that teaches STEM literacy to deaf students and their teachers."
     },
     {
@@ -394,12 +409,14 @@ export const siteConfig = {
       logo: '/sponsors/amano.jpg',
       tier: 'tier3',
       url: 'https://amanolabs.com',
+      founders:"Arish Shahab",
       description: "Amano designs pratical solutions for neurological technologies"
     },
     {
       name:"Hex Security",
       logo: '/sponsors/hex_security_logo.jpg',
       tier: 'tier3',
+      founders:"Huzaifa Ahmed",
       url: 'https://hex.co',
       description: "Peneration testing using autonomus AI agents"
     }
