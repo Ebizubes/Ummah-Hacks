@@ -112,7 +112,7 @@ export const siteConfig = {
       name: 'Sanat Karkat',
       role: 'Speaker',
       avatar: '/speakers/Sanat.jpg',
-      occupation:"",
+      occupation:"Founder @ Uproar",
       linkedin: '',
     },
   ],
