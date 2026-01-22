@@ -70,7 +70,7 @@ export const siteConfig = {
       role: 'Speaker/Judge', 
       company: '', 
       avatar: '/speakers/RANALKDN.jpeg',
-      occupation:"PM & Growth Intern",
+      occupation:"Growth and Product Management @ iSonic AI",
       linkedin: 'https://www.linkedin.com/in/rana-zaky/',
     },
     { 
