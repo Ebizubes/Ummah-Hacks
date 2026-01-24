@@ -315,9 +315,16 @@ export const siteConfig = {
     {
       id: 'open-innovation',
       title: 'Open Innovation',
-      purpose: 'Encourage creativity, strategic thinking, and user-centered innovation by focusing on ideation, design, and feasibility rather than implementation.',
+      purpose: 'Open-ended, uniqueness/creativity, strategy, design, and pitch development.',
       challenge: 'Teams must fully conceptualize, design, and create the blueprint and pitch for an innovative solution without writing a single line of code. This emphasizes Design Thinking, User Experience (UX/UI), Market Research, and Business Strategy.',
       icon: 'Lightbulb',
+    },
+    {
+      id: 'healthtech',
+      title: 'HealthTech',
+      purpose: 'To challenge participants to design thoughtful, human-centered healthcare solutions by focusing on clinical need, user experience, feasibility, and real-world impact.',
+      challenge: 'Teams must fully identify a meaningful healthcare problem and develop a complete solution from end to end. This includes identifying a core need and demonstrating how the solution could integrate into real healthcare environments.',
+      icon: 'Heart',
     },
   ],
   faq: [
