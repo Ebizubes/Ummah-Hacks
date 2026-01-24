@@ -1,4 +1,6 @@
 import { FadedStarsBackground } from './FadedStarsBackground'
+import { ScheduleTabs } from './ScheduleTabs'
+import { siteConfig } from '../siteConfig'
 
 export function ScheduleSection() {
   return (
@@ -17,10 +19,8 @@ export function ScheduleSection() {
             <div className="mx-auto w-24 h-1 bg-white/30"></div>
           </div>
 
-          <div className="mt-8 text-center sm:mt-12 md:mt-16">
-            <h2 className="text-3xl font-bold text-white font-display md:text-4xl lg:text-5xl">
-              Coming Soon
-            </h2>
+          <div className="mt-8 sm:mt-12 md:mt-16 flex justify-center">
+            <ScheduleTabs day1={siteConfig.schedule.day1} day2={siteConfig.schedule.day2} />
           </div>
         </div>
       </div>
