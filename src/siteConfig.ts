@@ -120,7 +120,7 @@ export const siteConfig = {
     day1: [
       {
         day: 'Friday, January 24',
-        time: '8:00 AM - 9:00 AM',
+        time: '8:00 AM',
         title: 'Registration',
         description: 'Registration starts at 8:00 AM and ends at 9:00 AM',
         type: 'main' as const,
