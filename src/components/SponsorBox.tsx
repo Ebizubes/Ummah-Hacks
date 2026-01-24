@@ -28,10 +28,10 @@ export function SponsorBox({ name, logo, tier, url, className = '', description,
     ? 'bg-gradient-to-br from-white/15 to-white/10 backdrop-blur-sm' // Tier 2: Medium background
     : 'bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm' // Tier 3: Lighter background
   
-  // Tier-specific height adjustments - same size on mobile, different on desktop
+  // Tier-specific height adjustments - larger on mobile to prevent text overflow
   const heightClass = isTier1 
-    ? 'h-[320px] w-[280px] sm:h-[400px] sm:w-[320px]' 
-    : 'h-[320px] w-[280px] sm:h-[360px] sm:w-[300px]' // Tier 2 and Tier 3: Same size on mobile
+    ? 'h-[420px] w-[320px] sm:h-[400px] sm:w-[320px]' 
+    : 'h-[400px] w-[320px] sm:h-[360px] sm:w-[300px]'
   
   // Additional tier-specific styling
   const tierStyles = isTier1 

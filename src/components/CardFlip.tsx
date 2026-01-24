@@ -39,7 +39,7 @@ export default function CardFlip({
 
   const cardContent = (
     <div
-      className={cn("relative mx-auto group h-[320px] w-[280px] sm:h-[320px] sm:w-[280px] [perspective:2000px]", className)}
+      className={cn("relative mx-auto group min-h-[320px] min-w-[280px] [perspective:2000px]", className)}
       onMouseEnter={() => setIsFlipped(true)}
       onMouseLeave={() => setIsFlipped(false)}
     >
