@@ -28,11 +28,26 @@ export function SponsorsSection() {
           {/* Sponsors Grid */}
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3 sm:gap-6 md:gap-8">
             {allSponsors.map((sponsor, index) => {
+              const totalSponsors = allSponsors.length
+              const itemsPerRow = 3
+              const lastRowStart = Math.floor((totalSponsors - 1) / itemsPerRow) * itemsPerRow
+              const isLastRow = index >= lastRowStart
+              const itemsInLastRow = totalSponsors - lastRowStart
+              const isLastRowIncomplete = isLastRow && itemsInLastRow < itemsPerRow
+              
+              // Calculate grid column position for last row centering
+              const relativeIndexInLastRow = index - lastRowStart
+              const lastRowOffset = isLastRowIncomplete ? Math.floor((itemsPerRow - itemsInLastRow) / 2) : 0
+              const gridColumnStart = isLastRowIncomplete ? lastRowOffset + relativeIndexInLastRow + 1 : undefined
+              
               return (
                 <div
                   key={`${sponsor.name}-${index}`}
                   className="md:block"
-                  style={{ willChange: 'transform' }}
+                  style={{ 
+                    willChange: 'transform',
+                    ...(gridColumnStart && { gridColumnStart })
+                  }}
                 >
                   <div className="mx-auto md:mx-0">
                     <SponsorBox
